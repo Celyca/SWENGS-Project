@@ -1,4 +1,4 @@
-package therapie.db.model.user;
+package swengs.therapiedb.model.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;

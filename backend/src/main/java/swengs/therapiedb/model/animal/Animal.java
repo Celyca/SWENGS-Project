@@ -1,4 +1,4 @@
-package therapie.db.model.animal;
+package swengs.therapiedb.model.animal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

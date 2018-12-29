@@ -1,4 +1,4 @@
-package therapie.db.filter;
+package swengs.therapiedb.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -10,7 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import therapie.db.JwtConfig;
+import swengs.therapiedb.JwtConfig;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

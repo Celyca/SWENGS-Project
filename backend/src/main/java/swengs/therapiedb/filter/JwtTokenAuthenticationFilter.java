@@ -1,4 +1,4 @@
-package therapie.db.filter;
+package swengs.therapiedb.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -6,7 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-import therapie.db.JwtConfig;
+import swengs.therapiedb.JwtConfig;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

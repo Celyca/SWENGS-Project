@@ -1,4 +1,4 @@
-package therapie.db;
+package swengs.therapiedb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import therapie.db.filter.JwtTokenAuthenticationFilter;
-import therapie.db.filter.JwtUsernameAndPasswordAuthenticationFilter;
+import swengs.therapiedb.filter.JwtTokenAuthenticationFilter;
+import swengs.therapiedb.filter.JwtUsernameAndPasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
 

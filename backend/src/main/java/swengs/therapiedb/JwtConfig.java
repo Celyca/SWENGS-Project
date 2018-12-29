@@ -1,4 +1,4 @@
-package therapie.db;
+package swengs.therapiedb;
 
 import org.springframework.beans.factory.annotation.Value;
 

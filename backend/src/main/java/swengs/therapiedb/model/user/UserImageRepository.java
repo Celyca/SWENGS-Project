@@ -1,4 +1,4 @@
-package therapie.db.model.user;
+package swengs.therapiedb.model.user;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
