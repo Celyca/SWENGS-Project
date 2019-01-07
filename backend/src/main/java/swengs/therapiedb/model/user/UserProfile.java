@@ -26,7 +26,6 @@ public class UserProfile {
     private String city;
     private String address;
     private String phone;
-    private boolean isEmployee;
 
     @OneToOne
     private User user;
@@ -38,12 +37,11 @@ public class UserProfile {
     public UserProfile() {
     }
 
-    public UserProfile(String firstName, String lastName, Date dayOfBirth, String email, boolean isEmployee) {
+    public UserProfile(String firstName, String lastName, Date dayOfBirth, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dayOfBirth = dayOfBirth;
         this.email = email;
-        this.isEmployee = isEmployee;
     }
 
     public long getId() {
@@ -118,14 +116,6 @@ public class UserProfile {
         this.phone = phone;
     }
 
-    public boolean isEmployee() {
-        return isEmployee;
-    }
-
-    public void setEmployee(boolean employee) {
-        isEmployee = employee;
-    }
-
     public User getUser() {
         return user;
     }
@@ -159,7 +149,6 @@ public class UserProfile {
                 ", city='" + city + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", isEmployee=" + isEmployee +
                 ", user=" + user +
                 ", version=" + version +
                 '}';

@@ -65,6 +65,14 @@ public class User {
         this.admin = admin;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
