@@ -17,7 +17,7 @@ public class User {
     private String password;
     private boolean admin;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
     private UserProfile userProfile;
 
     @Version

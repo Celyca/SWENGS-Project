@@ -16,8 +16,7 @@ public class UserFacade {
     private UserService userService;
 
     void mapDtoToEntity(UserDTO dto, User entity) {
-        UserProfile profile = entity.getUserProfile();
-        entity.setUsername(dto.getUsername());
+        UserProfile profile = userService.getProfile(entity);
         profile.setFirstName(dto.getFirstName());
         profile.setLastName(dto.getLastName());
         profile.setDayOfBirth(dto.getDayOfBirth());
@@ -43,14 +42,14 @@ public class UserFacade {
     }
 
     public UserDTO update(Long id, UserDTO dto) {
-        User entity = userService.getProfile(userService.findById(id).get());
+        User entity = userService.findById(id).get();
         mapDtoToEntity(dto, entity);
         mapEntityToDto(userService.save(entity), dto);
         return dto;
     }
 
-    public UserDTO create(UserDTO dto) {
-        User entity = userService.getProfile(new User());
+    public UserDTO create(Long id, UserDTO dto) {
+        User entity = userService.findById(id).get();
         mapDtoToEntity(dto, entity);
         mapEntityToDto(userService.save(entity), dto);
         return dto;

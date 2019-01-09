@@ -9,22 +9,23 @@ import swengs.therapiedb.service.UserService;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/dto/users")
 public class UserController {
 
     @Autowired
     private UserFacade userFacade;
 
-    @GetMapping("/dto/users/{id}")
+    @GetMapping("{id}")
     UserDTO getById(@PathVariable Long id) {
         return userFacade.getById(id);
     }
 
-    @PostMapping("/dto/users")
-    UserDTO create(@RequestBody @Valid UserDTO dto) {
-        return userFacade.create(dto);
+    @PostMapping("{id}")
+    UserDTO create(@PathVariable Long id, @RequestBody @Valid UserDTO dto) {
+        return userFacade.create(id, dto);
     }
 
-    @PutMapping("/dto/users/{id}")
+    @PutMapping("{id}")
     UserDTO update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
         return userFacade.update(id, dto);
     }

@@ -27,7 +27,7 @@ public class UserProfile {
     private String address;
     private String phone;
 
-    @OneToOne
+    @OneToOne(mappedBy = "userProfile")
     private User user;
 
     @Version
