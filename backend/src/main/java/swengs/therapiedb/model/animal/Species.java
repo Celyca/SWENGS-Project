@@ -1,6 +1,7 @@
 package swengs.therapiedb.model.animal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import swengs.therapiedb.model.therapie.Offer;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,6 +19,9 @@ public class Species {
     @OneToMany(mappedBy = "species")
     private List<Animal> animals;
 
+    @OneToMany(mappedBy = "species")
+    private List<Offer> offers;
+
     @Version
     @JsonIgnore
     private long version;
@@ -25,9 +29,8 @@ public class Species {
     public Species() {
     }
 
-    public Species(String name, List<Animal> animals) {
+    public Species(String name) {
         this.name = name;
-        this.animals = animals;
     }
 
     public long getId() {
@@ -54,6 +57,14 @@ public class Species {
         this.animals = animals;
     }
 
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,6 +84,7 @@ public class Species {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", animals=" + animals +
+                ", offers=" + offers +
                 ", version=" + version +
                 '}';
     }

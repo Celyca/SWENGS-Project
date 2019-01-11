@@ -6,7 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import swengs.therapiedb.dto.UserDTO;
 import swengs.therapiedb.model.user.User;
 import swengs.therapiedb.model.user.UserProfile;
+import swengs.therapiedb.service.LocationService;
 import swengs.therapiedb.service.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service()
 @Transactional
@@ -14,6 +19,11 @@ public class UserFacade {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LocationService locationService;
+
+    // ---------------------------------------------------------------------------------
 
     void mapDtoToEntity(UserDTO dto, User entity) {
         UserProfile profile = userService.getProfile(entity);
@@ -25,6 +35,7 @@ public class UserFacade {
         profile.setCity(dto.getCity());
         profile.setAddress(dto.getAddress());
         profile.setPhone(dto.getPhone());
+        entity.setLocations(locationService.getLocations(dto.getLocations()));
         entity.setUserProfile(profile);
     }
 
@@ -39,7 +50,10 @@ public class UserFacade {
         dto.setCity(entity.getUserProfile().getCity());
         dto.setAddress(entity.getUserProfile().getAddress());
         dto.setPhone(entity.getUserProfile().getPhone());
+        dto.setLocations(entity.getLocations().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
+
+    // ---------------------------------------------------------------------------------
 
     public UserDTO update(Long id, UserDTO dto) {
         User entity = userService.findById(id).get();
@@ -60,5 +74,31 @@ public class UserFacade {
         UserDTO dto = new UserDTO();
         mapEntityToDto(entity, dto);
         return dto;
+    }
+
+    public void delete(Long id) {
+        userService.delete(id);
+    }
+
+    // ---------------------------------------------------------------------------------
+
+    public List<UserDTO> getAll() {
+        List<UserDTO> dtos = new ArrayList<>();
+        userService.findAll().forEach(entity -> {
+            UserDTO dto = new UserDTO();
+            mapEntityToDto(entity, dto);
+            dtos.add(dto);
+        });
+        return dtos;
+    }
+
+    public List<UserDTO> getAllByEmployee() {
+        List<UserDTO> dtos = new ArrayList<>();
+        userService.findByEmployee().forEach(entity -> {
+            UserDTO dto = new UserDTO();
+            mapEntityToDto(entity, dto);
+            dtos.add(dto);
+        });
+        return dtos;
     }
 }

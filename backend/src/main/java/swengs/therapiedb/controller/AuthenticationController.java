@@ -1,9 +1,12 @@
 package swengs.therapiedb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import swengs.therapiedb.dto.AuthenticationDTO;
-import swengs.therapiedb.dto.UserDTO;
 import swengs.therapiedb.facade.AuthenticationFacade;
 import swengs.therapiedb.service.UserService;
 
@@ -19,23 +22,39 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationFacade authenticationFacade;
 
-    @GetMapping("/users/{id}")
-    AuthenticationDTO getById(@PathVariable Long id) {
-        return authenticationFacade.getById(id);
-    }
-
+    // ---------------------------------------------------------------------------------
     @PostMapping("/users")
-    AuthenticationDTO create(@RequestBody @Valid AuthenticationDTO dto) {
-        return authenticationFacade.create(dto);
+    ResponseEntity<AuthenticationDTO> create(@RequestBody @Valid AuthenticationDTO dto, UriComponentsBuilder ucBuilder) {
+    // ---------------------------------------------------------------------------------
+
+        AuthenticationDTO result = authenticationFacade.create(dto);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/users/{id}").buildAndExpand(result.getId()).toUri());
+        return new ResponseEntity<AuthenticationDTO>(headers, HttpStatus.CREATED);
     }
 
+    // ---------------------------------------------------------------------------------
     @PutMapping("/users/{id}")
-    AuthenticationDTO update(@RequestBody @Valid AuthenticationDTO dto, @PathVariable Long id) {
-        return authenticationFacade.update(id, dto);
+    ResponseEntity<AuthenticationDTO> update(@RequestBody @Valid AuthenticationDTO dto, @PathVariable Long id) {
+    // ---------------------------------------------------------------------------------
+
+        if (!userService.findById(id).isPresent()) {
+            return new ResponseEntity<AuthenticationDTO>(HttpStatus.NOT_FOUND);
+        }
+
+        authenticationFacade.update(id, dto);
+        return new ResponseEntity<AuthenticationDTO>(HttpStatus.NO_CONTENT);
     }
 
+    // ---------------------------------------------------------------------------------
     @GetMapping("/auth")
-    AuthenticationDTO getAuth() {
-        return authenticationFacade.getAuth();
+    ResponseEntity<AuthenticationDTO> getAuth() {
+    // ---------------------------------------------------------------------------------
+        AuthenticationDTO result = authenticationFacade.getAuth();
+        if (result == null) {
+            return new ResponseEntity<AuthenticationDTO>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<AuthenticationDTO>(result, HttpStatus.OK);
     }
 }

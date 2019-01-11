@@ -1,20 +1,18 @@
 package swengs.therapiedb.dto;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-public class UserDTO {
+public class LocationDTO {
     private long id;
-    private String username;
-    private String firstName;
-    private String lastName;
-    private Date dayOfBirth;
+    private String name;
     private String email;
     private int zip;
     private String city;
     private String address;
     private String phone;
-    private Set<Long> locations;
+    private Set<Long> animals;
+    private Set<Long> users;
 
     public long getId() {
         return id;
@@ -24,36 +22,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(Date dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -96,11 +70,19 @@ public class UserDTO {
         this.phone = phone;
     }
 
-    public Set<Long> getLocations() {
-        return locations;
+    public Set<Long> getAnimals() {
+        return animals;
     }
 
-    public void setLocations(Set<Long> locations) {
-        this.locations = locations;
+    public void setAnimals(Set<Long> animals) {
+        this.animals = animals;
+    }
+
+    public Set<Long> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<Long> users) {
+        this.users = users;
     }
 }

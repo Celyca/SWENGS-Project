@@ -22,19 +22,39 @@ public class AuthenticationFacade {
     @Autowired
     private UserService userService;
 
+    // ---------------------------------------------------------------------------------
+
     void mapDtoToEntity(AuthenticationDTO dto, User entity) {
         entity.setUsername(dto.getUsername());
         entity.setPassword(encoder.encode(dto.getPassword()));
         entity.setAdmin(dto.isAdmin());
+        entity.setEmployee(dto.isEmployee());
     }
 
     private void mapEntityToDto(User entity, AuthenticationDTO dto) {
         dto.setUsername(entity.getUsername());
-        dto.setAdmin(dto.isAdmin());
+        dto.setAdmin(entity.isAdmin());
+        dto.setEmployee(entity.isEmployee());
+    }
+
+    // ---------------------------------------------------------------------------------
+
+    public AuthenticationDTO update(Long id, AuthenticationDTO dto) {
+        if (!authenticationService.getAuthentication().isAdmin()) {
+            dto.setAdmin(false);
+            dto.setEmployee(false);
+        }
+
+        User entity = userService.findById(id).get();
+        mapDtoToEntity(dto, entity);
+        mapEntityToDto(userService.save(entity), dto);
+        return dto;
     }
 
     public AuthenticationDTO create(AuthenticationDTO dto) {
         User entity = new User();
+        dto.setEmployee(false);
+        dto.setAdmin(false);
         mapDtoToEntity(dto, entity);
         mapEntityToDto(userService.save(entity), dto);
         return dto;
@@ -47,12 +67,7 @@ public class AuthenticationFacade {
         return dto;
     }
 
-    public AuthenticationDTO update(Long id, AuthenticationDTO dto) {
-        User entity = userService.findById(id).get();
-        mapDtoToEntity(dto, entity);
-        mapEntityToDto(userService.save(entity), dto);
-        return dto;
-    }
+    // ---------------------------------------------------------------------------------
 
     public AuthenticationDTO getAuth() {
         User entity = authenticationService.getAuthentication();

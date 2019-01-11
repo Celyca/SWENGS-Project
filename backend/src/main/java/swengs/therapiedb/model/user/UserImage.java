@@ -3,6 +3,7 @@ package swengs.therapiedb.model.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -13,16 +14,19 @@ public class UserImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
-    private String filename;
+    @NotNull
+    @Column(name = "original_file_name", nullable = false)
+    private String originalFileName;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] content;
-
+    @NotNull
+    @Column(name = "content_type", nullable = false)
     private String contentType;
 
-    @OneToOne
+    @NotNull
+    @Column(name = "jhi_size", nullable = false)
+    private Long size;
+
+    @OneToOne(mappedBy = "image")
     private User user;
 
     @Version
@@ -32,11 +36,10 @@ public class UserImage {
     public UserImage() {
     }
 
-    public UserImage(String name, String filename, byte[] content, String contentType, User user) {
-        this.name = name;
-        this.filename = filename;
-        this.content = content;
+    public UserImage(@NotNull String originalFileName, @NotNull String contentType, @NotNull Long size, User user) {
+        this.originalFileName = originalFileName;
         this.contentType = contentType;
+        this.size = size;
         this.user = user;
     }
 
@@ -48,28 +51,12 @@ public class UserImage {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getOriginalFileName() {
+        return originalFileName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
+    public void setOriginalFileName(String originalFileName) {
+        this.originalFileName = originalFileName;
     }
 
     public String getContentType() {
@@ -78,6 +65,14 @@ public class UserImage {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 
     public User getUser() {
@@ -105,10 +100,9 @@ public class UserImage {
     public String toString() {
         return "UserImage{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", filename='" + filename + '\'' +
-                ", content=" + Arrays.toString(content) +
+                ", originalFileName='" + originalFileName + '\'' +
                 ", contentType='" + contentType + '\'' +
+                ", size=" + size +
                 ", user=" + user +
                 ", version=" + version +
                 '}';

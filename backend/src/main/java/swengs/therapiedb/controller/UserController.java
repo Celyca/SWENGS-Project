@@ -1,7 +1,11 @@
 package swengs.therapiedb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import swengs.therapiedb.dto.UserDTO;
 import swengs.therapiedb.facade.UserFacade;
 import swengs.therapiedb.service.UserService;
@@ -15,18 +19,43 @@ public class UserController {
     @Autowired
     private UserFacade userFacade;
 
+    @Autowired
+    private UserService userService;
+
+    // ---------------------------------------------------------------------------------
     @GetMapping("{id}")
-    UserDTO getById(@PathVariable Long id) {
-        return userFacade.getById(id);
+    ResponseEntity<UserDTO> getById(@PathVariable Long id) {
+    // ---------------------------------------------------------------------------------
+        if (!userService.findById(id).isPresent()) {
+            return new ResponseEntity<UserDTO>(HttpStatus.NOT_FOUND);
+        }
+
+        UserDTO dto = userFacade.getById(id);
+        return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
     }
 
+    // ---------------------------------------------------------------------------------
     @PostMapping("{id}")
-    UserDTO create(@PathVariable Long id, @RequestBody @Valid UserDTO dto) {
-        return userFacade.create(id, dto);
+    ResponseEntity<UserDTO> create(@PathVariable Long id, @RequestBody @Valid UserDTO dto, UriComponentsBuilder ucBuilder) {
+    // ---------------------------------------------------------------------------------
+
+        UserDTO result = userFacade.create(id, dto);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/api/users/{id}").buildAndExpand(result.getId()).toUri());
+        return new ResponseEntity<UserDTO>(headers, HttpStatus.CREATED);
     }
 
+    // ---------------------------------------------------------------------------------
     @PutMapping("{id}")
-    UserDTO update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
-        return userFacade.update(id, dto);
+    ResponseEntity<UserDTO> update(@RequestBody @Valid UserDTO dto, @PathVariable Long id) {
+    // ---------------------------------------------------------------------------------
+
+        if (!userService.findById(id).isPresent()) {
+            return new ResponseEntity<UserDTO>(HttpStatus.NOT_FOUND);
+        }
+
+        userFacade.update(id, dto);
+        return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
     }
 }

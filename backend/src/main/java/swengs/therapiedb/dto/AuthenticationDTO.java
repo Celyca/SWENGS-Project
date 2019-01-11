@@ -5,6 +5,7 @@ public class AuthenticationDTO {
     private String username;
     private String password;
     private boolean admin;
+    private boolean employee;
 
     public long getId() {
         return id;
@@ -36,5 +37,13 @@ public class AuthenticationDTO {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public boolean isEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(boolean employee) {
+        this.employee = employee;
     }
 }

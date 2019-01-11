@@ -1,47 +1,54 @@
-package swengs.therapiedb.model.user;
+package swengs.therapiedb.model.therapie;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import swengs.therapiedb.model.animal.Animal;
+import swengs.therapiedb.model.user.User;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-public class UserProfile {
+public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String firstName;
-    private String lastName;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dayOfBirth;
-
+    private String name;
     private String email;
     private int zip;
     private String city;
     private String address;
     private String phone;
 
-    @OneToOne(mappedBy = "userProfile")
-    private User user;
+    @OneToMany(mappedBy = "location")
+    private Set<Animal> animals;
+
+    @OneToMany(mappedBy = "location")
+    private Set<Offer> offers;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "users_locations",
+            joinColumns = @JoinColumn(name = "location_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users;
 
     @Version
     @JsonIgnore
     private long version;
 
-    public UserProfile() {
+    public Location() {
     }
 
-    public UserProfile(String firstName, String lastName, Date dayOfBirth, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dayOfBirth = dayOfBirth;
+    public Location(String name, String email, int zip, String city, String address, String phone) {
+        this.name = name;
         this.email = email;
+        this.zip = zip;
+        this.city = city;
+        this.address = address;
+        this.phone = phone;
     }
 
     public long getId() {
@@ -52,28 +59,12 @@ public class UserProfile {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getDayOfBirth() {
-        return dayOfBirth;
-    }
-
-    public void setDayOfBirth(Date dayOfBirth) {
-        this.dayOfBirth = dayOfBirth;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -116,20 +107,36 @@ public class UserProfile {
         this.phone = phone;
     }
 
-    public User getUser() {
-        return user;
+    public Set<Animal> getAnimals() {
+        return animals;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAnimals(Set<Animal> animals) {
+        this.animals = animals;
+    }
+
+    public Set<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(Set<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserProfile profile = (UserProfile) o;
-        return id == profile.id;
+        Location location = (Location) o;
+        return id == location.id;
     }
 
     @Override
@@ -139,17 +146,17 @@ public class UserProfile {
 
     @Override
     public String toString() {
-        return "UserProfile{" +
+        return "Location{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dayOfBirth=" + dayOfBirth +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", zip=" + zip +
                 ", city='" + city + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", user=" + user +
+                ", animals=" + animals +
+                ", offers=" + offers +
+                ", users=" + users +
                 ", version=" + version +
                 '}';
     }

@@ -3,6 +3,7 @@ package swengs.therapiedb.model.animal;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -13,16 +14,20 @@ public class AnimalImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
-    private String filename;
+    @NotNull
+    @Column(name = "original_file_name", nullable = false)
+    private String originalFileName;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] content;
-
+    @NotNull
+    @Column(name = "content_type", nullable = false)
     private String contentType;
 
-    @OneToOne
+    @NotNull
+    @Column(name = "jhi_size", nullable = false)
+    private Long size;
+
+
+    @OneToOne(mappedBy = "image")
     private Animal animal;
 
     @Version
@@ -32,11 +37,10 @@ public class AnimalImage {
     public AnimalImage() {
     }
 
-    public AnimalImage(String name, String filename, boolean profile, byte[] content, String contentType, Animal animal) {
-        this.name = name;
-        this.filename = filename;
-        this.content = content;
+    public AnimalImage(@NotNull String originalFileName, @NotNull String contentType, @NotNull Long size, Animal animal) {
+        this.originalFileName = originalFileName;
         this.contentType = contentType;
+        this.size = size;
         this.animal = animal;
     }
 
@@ -48,28 +52,12 @@ public class AnimalImage {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getOriginalFileName() {
+        return originalFileName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
+    public void setOriginalFileName(String originalFileName) {
+        this.originalFileName = originalFileName;
     }
 
     public String getContentType() {
@@ -78,6 +66,14 @@ public class AnimalImage {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 
     public Animal getAnimal() {
@@ -105,10 +101,9 @@ public class AnimalImage {
     public String toString() {
         return "AnimalImage{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", filename='" + filename + '\'' +
-                ", content=" + Arrays.toString(content) +
+                ", originalFileName='" + originalFileName + '\'' +
                 ", contentType='" + contentType + '\'' +
+                ", size=" + size +
                 ", animal=" + animal +
                 ", version=" + version +
                 '}';

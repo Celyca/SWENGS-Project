@@ -1,8 +1,8 @@
 package swengs.therapiedb.model.animal;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource
-public interface AnimalImageRepository extends PagingAndSortingRepository<AnimalImage,Long> {
+public interface AnimalImageRepository extends PagingAndSortingRepository<AnimalImage, Long>, JpaRepository<AnimalImage, Long>, CrudRepository<AnimalImage, Long> {
 }

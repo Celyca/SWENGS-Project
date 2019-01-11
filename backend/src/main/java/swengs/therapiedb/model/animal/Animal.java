@@ -1,8 +1,11 @@
 package swengs.therapiedb.model.animal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import swengs.therapiedb.model.therapie.Event;
+import swengs.therapiedb.model.therapie.Location;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,8 +25,14 @@ public class Animal {
     @ManyToOne
     private Species species;
 
-    @OneToOne(mappedBy = "animal")
+    @OneToOne
     private AnimalImage image;
+
+    @OneToMany(mappedBy = "animal")
+    private List<Event> events;
+
+    @ManyToOne
+    private Location location;
 
     @Version
     @JsonIgnore
@@ -114,6 +123,22 @@ public class Animal {
         this.image = image;
     }
 
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,6 +163,9 @@ public class Animal {
                 ", gender='" + gender + '\'' +
                 ", description='" + description + '\'' +
                 ", species=" + species +
+                ", image=" + image +
+                ", events=" + events +
+                ", location=" + location +
                 ", version=" + version +
                 '}';
     }

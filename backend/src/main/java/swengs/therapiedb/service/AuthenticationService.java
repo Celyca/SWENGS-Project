@@ -14,9 +14,12 @@ public class AuthenticationService {
     @Autowired
     private UserRepository userRepository;
 
+    // ---------------------------------------------------------------------------------
+
     public User findByName(String name) {
         return userRepository.findByUsername(name);
     }
+
     public User getAuthentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
@@ -24,5 +27,6 @@ public class AuthenticationService {
         return findByName(currentUserName);
     }
 
+    // ---------------------------------------------------------------------------------
 
 }
