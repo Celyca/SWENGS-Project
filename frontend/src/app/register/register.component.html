@@ -1,0 +1,58 @@
+<html>
+<form>
+
+  <div class="text-center border border-light p-5 offset-lg-4 col-lg-4 col-sm-10 col-xs-6 col-12">
+    <img class="img" src="../../assets/img/logo.png">
+    <p class="h2 mb-4"> REGISTER </p>
+
+    <p style="font-weight: bold">Please fill in all fields in order to register.</p>
+
+    <hr>
+    <label>
+      <strong><i class="fa fa-user left mr-2"></i>Username:</strong>
+      <input type="text" class="form-control" name="username"/>
+    </label>
+    <br>
+
+    <label>
+      <strong><i class="fa fa-lock left mr-2"></i>Password:</strong>
+      <input type="text" class="form-control" name="password"/>
+    </label>
+    <br>
+    <label>
+      <strong><i class="fa fa-pencil left mr-2"></i>First name:</strong>
+      <input type="text" class="form-control" name="firstname"/>
+    </label>
+    <br>
+
+    <label>
+      <strong><i class="fa fa-address-book left mr-2"></i>Last name:</strong>
+      <input type="text" class="form-control" name="lastname"/>
+    </label>
+    <br>
+
+    <label>
+      <strong><i class="fa fa-calendar left mr-2"></i>Birthday:</strong>
+      <input type="date" class="form-control" name="dayOfBirth"/>
+    </label>
+    <br>
+
+    <label>
+      <strong><i class="fa fa-at left mr-2"></i>E-Mail:</strong>
+      <input type="text" class="form-control" name="email"/>
+    </label>
+    <br>
+
+    <label>
+      <strong><i class="fa fa-home left mr-2"></i>Address:</strong>
+      <input type="text" class="form-control" name="address"/>
+    </label>
+
+    <br>
+    <br>
+    <button mdbBtn block="true" (click)="save()" class="btn center-block">Save and Back</button>
+
+  </div>
+
+</form>
+</html>
