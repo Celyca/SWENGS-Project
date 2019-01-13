@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
@@ -34,8 +34,16 @@ export class UserService {
       const helper = new JwtHelperService();
       console.log(helper.decodeToken(token));
       this.loggedInChange.next(true);
-      this.router.navigate(['/actor-list']);
+      this.router.navigate(['/index']);
       return res;
     }));
   }
+
+
+  logout() {
+    localStorage.removeItem(this.accessTokenLocalStorageKey);
+    this.loggedInChange.next(false);
+    this.router.navigate(['/login']);
+  }
+
 }

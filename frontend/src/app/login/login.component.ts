@@ -29,4 +29,8 @@ export class LoginComponent implements OnInit {
         alert('wrong username or password');
       });
   }
+
+  register() {
+    this.router.navigate(['/register']);
+  }
 }
