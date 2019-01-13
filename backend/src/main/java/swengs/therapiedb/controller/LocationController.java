@@ -45,7 +45,7 @@ public class LocationController {
         LocationDTO result = locationFacade.create(dto);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/animals/{id}").buildAndExpand(result.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/api/locations/{id}").buildAndExpand(result.getId()).toUri());
         return new ResponseEntity<LocationDTO>(headers, HttpStatus.CREATED);
     }
 

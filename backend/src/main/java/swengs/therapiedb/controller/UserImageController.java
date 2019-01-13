@@ -34,7 +34,7 @@ public class UserImageController {
         UserImage result = userImageService.createMedia(file);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/animals/image/{id}").buildAndExpand(result.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/api/users/image/{id}").buildAndExpand(result.getId()).toUri());
         return new ResponseEntity<UserImage>(headers, HttpStatus.CREATED);
     }
 

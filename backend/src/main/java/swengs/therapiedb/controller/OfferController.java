@@ -45,7 +45,7 @@ public class OfferController {
         OfferDTO result = offerFacade.create(dto);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/animals/{id}").buildAndExpand(result.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/api/offers/{id}").buildAndExpand(result.getId()).toUri());
         return new ResponseEntity<OfferDTO>(headers, HttpStatus.CREATED);
     }
 

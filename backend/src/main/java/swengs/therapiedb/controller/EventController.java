@@ -45,7 +45,7 @@ public class EventController {
         EventDTO result = eventFacade.create(dto);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/animals/{id}").buildAndExpand(result.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/api/events/{id}").buildAndExpand(result.getId()).toUri());
         return new ResponseEntity<EventDTO>(headers, HttpStatus.CREATED);
     }
 
