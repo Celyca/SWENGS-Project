@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {User} from '../api/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,22 @@ export class UserService {
       this.isLoggedIn = value;
     });
   }
+
+  // ---------------------------------------------------------------------------------
+
+  create(user: User) {
+    return this.http.post('/api/authentication/users', user);
+  }
+
+  update(user: User) {
+    return this.http.put('/api/authentication/users/' + user.id, user);
+  }
+
+  getAuth() {
+    return this.http.get('/api/authentication/auth');
+  }
+
+  // ---------------------------------------------------------------------------------
 
   login(user) {
     return this.http.post('/api/auth/', user, {
