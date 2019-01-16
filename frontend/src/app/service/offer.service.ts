@@ -13,23 +13,23 @@ export class OfferService {
   // ---------------------------------------------------------------------------------
 
   getById(id: number) {
-    return this.http.get('/api/offers/' + id);
+    return this.http.get('/api/dto/offers/' + id);
   }
 
   create(offer: Offer) {
-    return this.http.post('/api/offers', offer);
+    return this.http.post('/api/dto/offers', offer);
   }
 
   update(offer: Offer) {
-    return this.http.put('/api/offers/' + offer.id, offer);
+    return this.http.put('/api/dto/offers/' + offer.id, offer);
   }
 
   delete(offer: Offer) {
-    return this.http.delete('/api/offers/' + offer.id);
+    return this.http.delete('/api/dto/offers/' + offer.id);
   }
 
   getAll() {
-    return this.http.get('/api/offers');
+    return this.http.get('/api/dto/offers');
   }
 
   // ---------------------------------------------------------------------------------

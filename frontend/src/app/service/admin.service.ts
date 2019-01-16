@@ -12,19 +12,19 @@ export class AdminService {
   // ---------------------------------------------------------------------------------
 
   getAllEmployees() {
-    return this.http.get('/api/admin/employee');
+    return this.http.get('/api/dto/admin/employee');
   }
 
   getAllUsers() {
-    return this.http.get('/api/admin/users');
+    return this.http.get('/api/dto/admin/users');
   }
 
   getÚserById(id: number) {
-    return this.http.get('/api/admin/users'  + id);
+    return this.http.get('/api/dto/admin/users'  + id);
   }
 
   deleteUser(id: number) {
-    return this.http.delete('/api/admin/users'  + id);
+    return this.http.delete('/api/dto/admin/users'  + id);
   }
 
   // ---------------------------------------------------------------------------------

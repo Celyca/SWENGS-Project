@@ -13,23 +13,23 @@ export class EventService {
   // ---------------------------------------------------------------------------------
 
   getById(id: number) {
-    return this.http.get('/api/events/' + id);
+    return this.http.get('/api/dto/events/' + id);
   }
 
   create(event: Event) {
-    return this.http.post('/api/events', event);
+    return this.http.post('/api/dto/events', event);
   }
 
   update(event: Event) {
-    return this.http.put('/api/events/' + event.id, event);
+    return this.http.put('/api/dto/events/' + event.id, event);
   }
 
   delete(event: Event) {
-    return this.http.delete('/api/events/' + event.id);
+    return this.http.delete('/api/dto/events/' + event.id);
   }
 
   getAll() {
-    return this.http.get('/api/events');
+    return this.http.get('/api/dto/events');
   }
 
   // ---------------------------------------------------------------------------------

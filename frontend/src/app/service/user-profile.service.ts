@@ -13,15 +13,15 @@ export class UserProfileService {
   // ---------------------------------------------------------------------------------
 
   getById(id: number) {
-    return this.http.get('/api/users/' + id);
+    return this.http.get('/api/dto/users/' + id);
   }
 
   create(userProfile: UserProfile) {
-    return this.http.post('/api/users' + userProfile.id, userProfile);
+    return this.http.post('/api/dto/users' + userProfile.id, userProfile);
   }
 
   update(userProfile: UserProfile) {
-    return this.http.put('/api/users/' + userProfile.id, userProfile);
+    return this.http.put('/api/dto/users/' + userProfile.id, userProfile);
   }
 
   // ---------------------------------------------------------------------------------
