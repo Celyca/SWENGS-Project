@@ -19,7 +19,6 @@ export class AnimalService {
 
   create(animal: Animal) {
     return this.http.post('/api/dto/animals', animal);
-    return this.http.post('/api/dto/animals', animal);
   }
 
   update(animal: Animal) {

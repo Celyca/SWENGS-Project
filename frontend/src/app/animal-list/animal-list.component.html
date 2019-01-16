@@ -1,0 +1,16 @@
+<div *ngFor="let animal of animals">
+  // ---------------------------------------------------------------------------------
+  <br/>
+  Name: {{animal.name}} <br/>
+  Breed: {{animal.breed}} <br/>
+  Color: {{animal.color}} <br/>
+  Age: {{animal.age}} <br/>
+  Gender: {{animal.gender}} <br/>
+  Description: {{animal.description}} <br/>
+  <br/>
+  <!--<a [routerLink]="'/animal-form/' + animal.id">Edit</a> <button type="button" (click)="deleteAnimal(actor)">Delete</button> -->
+</div>
+
+<button type="button" (click)="createAnimal()">
+  Create animal
+</button>
