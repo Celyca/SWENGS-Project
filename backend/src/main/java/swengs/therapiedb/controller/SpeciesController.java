@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import swengs.therapiedb.dto.AnimalDTO;
+import swengs.therapiedb.dto.SpeciesDTO;
 import swengs.therapiedb.facade.AnimalFacade;
+import swengs.therapiedb.facade.SpeciesFacade;
 import swengs.therapiedb.model.animal.Species;
 import swengs.therapiedb.service.SpeciesService;
 
@@ -23,6 +25,9 @@ public class SpeciesController {
 
     @Autowired
     private SpeciesService speciesService;
+
+    @Autowired
+    private SpeciesFacade speciesFacade;
 
     // ---------------------------------------------------------------------------------
     @GetMapping("{id}")
@@ -40,17 +45,16 @@ public class SpeciesController {
 
     // ---------------------------------------------------------------------------------
     @GetMapping("")
-    ResponseEntity<List<Species>> getAll() {
+    ResponseEntity<List<SpeciesDTO>> getAll() {
     // ---------------------------------------------------------------------------------
 
         List<Species> species = speciesService.findAll();
 
         if (species == null || !species.iterator().hasNext()) {
-            return new ResponseEntity<List<Species>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<SpeciesDTO>>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<List<Species>>(species,HttpStatus.OK);
+        List<SpeciesDTO> dtos = speciesFacade.getAll();
+        return new ResponseEntity<List<SpeciesDTO>>(dtos,HttpStatus.OK);
     }
-
-
 }
