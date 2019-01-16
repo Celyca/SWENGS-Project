@@ -27,15 +27,15 @@ export class UserService {
   // ---------------------------------------------------------------------------------
 
   create(user: User) {
-    return this.http.post('/api/authentication/users', user);
+    return this.http.post('/api/dto/authentication/users', user);
   }
 
   update(user: User) {
-    return this.http.put('/api/authentication/users/' + user.id, user);
+    return this.http.put('/api/dto/authentication/users/' + user.id, user);
   }
 
   getAuth() {
-    return this.http.get('/api/authentication/auth');
+    return this.http.get('/api/dto/authentication/auth');
   }
 
   // ---------------------------------------------------------------------------------
