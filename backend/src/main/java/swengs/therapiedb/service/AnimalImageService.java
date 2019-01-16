@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import swengs.therapiedb.model.animal.Animal;
 import swengs.therapiedb.model.animal.AnimalImage;
 import swengs.therapiedb.model.animal.AnimalImageRepository;
 
@@ -19,6 +20,9 @@ public class AnimalImageService {
 
     @Autowired
     private AnimalImageRepository animalImageRepository;
+
+    @Autowired
+    private AnimalService animalService;
 
     // ---------------------------------------------------------------------------------
 
@@ -37,11 +41,19 @@ public class AnimalImageService {
 
     // ---------------------------------------------------------------------------------
 
-    public AnimalImage createMedia(MultipartFile multipartFile) throws IOException {
+    public AnimalImage createMedia(MultipartFile multipartFile, Long id) throws IOException {
         AnimalImage dbMedia = new AnimalImage();
         dbMedia.setOriginalFileName(multipartFile.getOriginalFilename());
         dbMedia.setContentType(multipartFile.getContentType());
         dbMedia.setSize(multipartFile.getSize());
+
+        Animal animal = animalService.findById(id).get();
+        if (animal.getImage() == null) {
+            dbMedia.setAnimal(animal);
+        } else {
+            deleteMediaFile(animal.getImage());
+            dbMedia.setAnimal(animal);
+        }
         AnimalImage savedDbMedia = save(dbMedia);
 
         File dest = retrieveMediaFile(savedDbMedia);
@@ -57,6 +69,14 @@ public class AnimalImageService {
         File uploadsDir = retrieveUploadsDirectory();
         String filePath = uploadsDir.getAbsolutePath() + "/" + media.getId();
         return new File(filePath);
+    }
+
+    public void deleteMediaFile(AnimalImage media) {
+        File uploadsDir = retrieveUploadsDirectory();
+        String filePath = uploadsDir.getAbsolutePath() + "/" + media.getId();
+        File file = new File(filePath);
+        delete(media.getId());
+        file.delete();
     }
 
     private File retrieveUploadsDirectory() {
