@@ -27,7 +27,8 @@ import {AnimalFormComponent} from './animal-form/animal-form.component';
 import {NgxSelectModule} from 'ngx-select-ex';
 import { AnimalImageComponent } from './animal-image/animal-image.component';
 import {FileUploadModule} from 'ng2-file-upload';
-import {SafeUrlPipe} from './service/SafeUrlPipe';
+import {SafeUrlPipe} from './pipe/SafeUrlPipe';
+import {ImagePipe} from './pipe/ImagePipe';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -44,6 +45,7 @@ export function tokenGetter() {
     AnimalFormComponent,
     AnimalImageComponent,
     SafeUrlPipe,
+    ImagePipe,
   ],
   imports: [
     BrowserModule,

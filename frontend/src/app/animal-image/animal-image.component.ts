@@ -4,8 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import {UserService} from '../service/user.service';
 import {AnimalImage} from '../api/animalImage';
-import {Animal} from '../api/animal';
-
 
 @Component({
   selector: 'app-animal-image',

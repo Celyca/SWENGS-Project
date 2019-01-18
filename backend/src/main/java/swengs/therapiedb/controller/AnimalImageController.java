@@ -48,6 +48,7 @@ public class AnimalImageController {
             return new ResponseEntity<InputStreamResource>(HttpStatus.NOT_FOUND);
         }
         AnimalImage media = mediaResult.get();
+        media.setAnimal(null);
         File mediaFile = animalImageService.retrieveMediaFile(media);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(mediaFile));
 
