@@ -29,6 +29,8 @@ import { AnimalImageComponent } from './animal-image/animal-image.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import {SafeUrlPipe} from './pipe/SafeUrlPipe';
 import {ImagePipe} from './pipe/ImagePipe';
+import { LocationListComponent } from './location-list/location-list.component';
+import { LocationFormComponent } from './location-form/location-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -46,6 +48,8 @@ export function tokenGetter() {
     AnimalImageComponent,
     SafeUrlPipe,
     ImagePipe,
+    LocationListComponent,
+    LocationFormComponent,
   ],
   imports: [
     BrowserModule,

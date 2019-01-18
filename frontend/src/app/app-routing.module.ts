@@ -10,6 +10,9 @@ import {LocationListResolver} from './resolver/locationList.resolver';
 import {AnimalFormComponent} from './animal-form/animal-form.component';
 import {AnimalListResolver} from './resolver/animalList.resolver';
 import {AnimalResolver} from './resolver/animal.resolver';
+import {LocationListComponent} from './location-list/location-list.component';
+import {LocationFormComponent} from './location-form/location-form.component';
+import {LocationResolver} from './resolver/location.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -27,7 +30,7 @@ const routes: Routes = [
     resolve: {
       animals: AnimalListResolver,
       species: SpeciesListResolver,
-      location: LocationListResolver
+      locations: LocationListResolver
     }
   },
 
@@ -49,6 +52,33 @@ const routes: Routes = [
       animal: AnimalResolver,
       species: SpeciesListResolver,
       locations: LocationListResolver
+    }
+  },
+
+  // ---------------------------------------------------------------------------------
+  // LOCATIONS
+  // ---------------------------------------------------------------------------------
+
+  {
+    path: 'locations', component: LocationListComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      locations: LocationListResolver
+    }
+  },
+
+  {
+    path: 'location-form', component: LocationFormComponent,
+    canActivate: [AuthGuard],
+  },
+
+  // ---------------------------------------------------------------------------------
+
+  {
+    path: 'location-form/:id', component: LocationFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      location: LocationResolver
     }
   },
 

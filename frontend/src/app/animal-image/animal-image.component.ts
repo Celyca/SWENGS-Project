@@ -82,7 +82,9 @@ export class AnimalImageComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    this.animalImage = obj;
+    this.animalImage = {
+      id: obj
+    };
     this.onChange(obj);
     this.initPreviews();
   }

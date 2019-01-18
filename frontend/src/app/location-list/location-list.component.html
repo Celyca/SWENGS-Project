@@ -1,0 +1,24 @@
+<div class="page">
+<mat-accordion *ngFor="let location of locations">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Name: {{location.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        City: {{location.city}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    E-Mail: {{location.email}} <br/>
+    Zip: {{location.zip}} <br/>
+    Address: {{location.address}} <br/>
+    Phone: {{location.phone}} <br/>
+    <br/>
+    <a mdbBtn color="purple" [routerLink]="'/location-form/' + location.id">Edit</a> <button mdbBtn color="purple" type="button" (click)="deleteLocation(location)">Delete</button>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<button type="button" (click)="createLocation()">
+  Create Locations
+</button>
+</div>
