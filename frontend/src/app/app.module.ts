@@ -9,7 +9,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { MainComponent } from './main/main.component';
-import {MatButtonModule, MatIconModule, MatListModule, MatSelectModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 import {LayoutModule} from '@angular/cdk/layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
@@ -17,6 +25,9 @@ import { RegisterComponent } from './register/register.component';
 import {AnimalListComponent} from './animal-list/animal-list.component';
 import {AnimalFormComponent} from './animal-form/animal-form.component';
 import {NgxSelectModule} from 'ngx-select-ex';
+import { AnimalImageComponent } from './animal-image/animal-image.component';
+import {FileUploadModule} from 'ng2-file-upload';
+import {SafeUrlPipe} from './service/SafeUrlPipe';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -31,6 +42,8 @@ export function tokenGetter() {
     RegisterComponent,
     AnimalListComponent,
     AnimalFormComponent,
+    AnimalImageComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +61,8 @@ export function tokenGetter() {
     MatListModule,
     MatSelectModule,
     NgxSelectModule,
+    MatExpansionModule,
+    FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

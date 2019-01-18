@@ -32,6 +32,7 @@ export class AnimalFormComponent implements OnInit {
       'description': new FormControl(),
       'species': new FormControl(),
       'location': new FormControl(),
+      'image': new FormControl(),
     });
 
     const data = this.route.snapshot.data;

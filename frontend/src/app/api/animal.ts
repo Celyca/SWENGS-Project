@@ -8,4 +8,5 @@ export interface Animal {
   description: string;
   species?: any;
   location?: any;
+  image?: any;
 }
