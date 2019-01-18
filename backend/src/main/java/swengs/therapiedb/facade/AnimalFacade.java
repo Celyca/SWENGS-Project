@@ -1,18 +1,17 @@
 package swengs.therapiedb.facade;
 
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import swengs.therapiedb.dto.AnimalDTO;
 import swengs.therapiedb.model.animal.Animal;
+import swengs.therapiedb.service.AnimalImageService;
 import swengs.therapiedb.service.AnimalService;
 import swengs.therapiedb.service.LocationService;
 import swengs.therapiedb.service.SpeciesService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service()
 @Transactional
@@ -27,6 +26,9 @@ public class AnimalFacade {
     @Autowired
     private LocationService locationService;
 
+    @Autowired
+    private AnimalImageService animalImageService;
+
     // ---------------------------------------------------------------------------------
 
     void mapDtoToEntity(AnimalDTO dto, Animal entity) {
@@ -38,6 +40,7 @@ public class AnimalFacade {
         entity.setDescription(dto.getDescription());
         entity.setSpecies(speciesService.getSpecie(dto.getSpecies()));
         entity.setLocation(locationService.getLocation(dto.getLocation()));
+        entity.setImage(animalImageService.getImage(dto.getImage()));
     }
 
     private void mapEntityToDto(Animal entity, AnimalDTO dto) {
@@ -50,6 +53,7 @@ public class AnimalFacade {
         dto.setDescription(entity.getDescription());
         dto.setSpecies(entity.getSpecies().getId());
         dto.setLocation(entity.getLocation().getId());
+        dto.setImage(animalService.getImage(entity).getId());
     }
 
     // ---------------------------------------------------------------------------------

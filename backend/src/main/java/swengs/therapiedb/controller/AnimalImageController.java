@@ -27,15 +27,15 @@ public class AnimalImageController {
     private AnimalImageService animalImageService;
 
     // ---------------------------------------------------------------------------------
-    @PostMapping("{id}")
-    public ResponseEntity<AnimalImage> uploadMedia(@PathVariable Long id, @RequestPart MultipartFile file, UriComponentsBuilder ucBuilder) throws IOException, URISyntaxException {
+    @PostMapping("")
+    public ResponseEntity<AnimalImage> uploadMedia(@RequestPart MultipartFile file, UriComponentsBuilder ucBuilder) throws IOException, URISyntaxException {
     // ---------------------------------------------------------------------------------
 
-        AnimalImage result = animalImageService.createMedia(file, id);
+        AnimalImage result = animalImageService.createMedia(file);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/animals/image/{id}").buildAndExpand(result.getId()).toUri());
-        return new ResponseEntity<AnimalImage>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<AnimalImage>(result, headers, HttpStatus.CREATED);
     }
 
     // ---------------------------------------------------------------------------------

@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class AnimalImageService {
 
-    private static final String UPLOAD_FOLDER = "uploads/animal";
+    private static final String UPLOAD_FOLDER = "uploads/animals";
 
     @Autowired
     private AnimalImageRepository animalImageRepository;
@@ -41,19 +41,12 @@ public class AnimalImageService {
 
     // ---------------------------------------------------------------------------------
 
-    public AnimalImage createMedia(MultipartFile multipartFile, Long id) throws IOException {
+    public AnimalImage createMedia(MultipartFile multipartFile) throws IOException {
         AnimalImage dbMedia = new AnimalImage();
         dbMedia.setOriginalFileName(multipartFile.getOriginalFilename());
         dbMedia.setContentType(multipartFile.getContentType());
         dbMedia.setSize(multipartFile.getSize());
 
-        Animal animal = animalService.findById(id).get();
-        if (animal.getImage() == null) {
-            dbMedia.setAnimal(animal);
-        } else {
-            deleteMediaFile(animal.getImage());
-            dbMedia.setAnimal(animal);
-        }
         AnimalImage savedDbMedia = save(dbMedia);
 
         File dest = retrieveMediaFile(savedDbMedia);
@@ -61,6 +54,19 @@ public class AnimalImageService {
             fos.write(multipartFile.getBytes());
         }
         return savedDbMedia;
+    }
+
+    // ---------------------------------------------------------------------------------
+
+    public AnimalImage getImage(Long id) {
+        if (id != null) {
+            Optional<AnimalImage> entity = findOne(id);
+            if (entity.isPresent()) {
+                return entity.get();
+            }
+            return null;
+        }
+        return null;
     }
 
     // ---------------------------------------------------------------------------------
