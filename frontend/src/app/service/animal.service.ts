@@ -18,10 +18,16 @@ export class AnimalService {
   }
 
   create(animal: Animal) {
+    if (animal.image) {
+      animal.image = animal.image.id;
+    }
     return this.http.post('/api/dto/animals', animal);
   }
 
   update(animal: Animal) {
+    if (animal.image) {
+      animal.image = animal.image.id;
+    }
     return this.http.put('/api/dto/animals/' + animal.id, animal);
   }
 

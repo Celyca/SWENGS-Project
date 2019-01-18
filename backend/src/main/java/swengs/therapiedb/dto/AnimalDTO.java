@@ -11,6 +11,7 @@ public class AnimalDTO {
     private String description;
     private Long species;
     private Long location;
+    private Long image;
 
     public long getId() {
         return id;
@@ -82,5 +83,13 @@ public class AnimalDTO {
 
     public void setLocation(Long location) {
         this.location = location;
+    }
+
+    public Long getImage() {
+        return image;
+    }
+
+    public void setImage(Long image) {
+        this.image = image;
     }
 }

@@ -1,0 +1,18 @@
+<div>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Image Upload
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div class="row">
+    <div class="col">
+      <img [src]="preview | safeUrl" *ngIf="preview">
+    </div>
+    <div class="col">
+      <input [id]="'field_' + name" type="file" ng2FileSelect [uploader]="uploader" [multiple]="false"/>
+    </div>
+  </div>
+</mat-expansion-panel>
+</div>

@@ -3,6 +3,7 @@ package swengs.therapiedb.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import swengs.therapiedb.model.animal.Animal;
+import swengs.therapiedb.model.animal.AnimalImage;
 import swengs.therapiedb.model.animal.AnimalRepository;
 
 import java.util.HashSet;
@@ -45,6 +46,13 @@ public class AnimalService {
             dtos.forEach((dto) -> entities.add(animalRepository.findById(dto).get()));
         }
         return entities;
+    }
+
+    public AnimalImage getImage(Animal entity) {
+        if (entity.getImage() == null) {
+            return new AnimalImage();
+        }
+        return entity.getImage();
     }
 
     // ---------------------------------------------------------------------------------
