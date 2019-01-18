@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Animal} from '../api/animal';
+import {Location} from '../api/location';
 import {AnimalService} from '../service/animal.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -11,6 +12,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AnimalListComponent implements OnInit {
 
   animals: Array<Animal>;
+  locations: Array<Location>;
+  species: Array<any>;
 
   constructor(private animalService: AnimalService,
               private router: Router,
@@ -20,6 +23,8 @@ export class AnimalListComponent implements OnInit {
   ngOnInit() {
     const data = this.route.snapshot.data;
     this.animals = data.animals;
+    this.locations = data.locations;
+    this.species = data.species;
   }
 
   createAnimal() {

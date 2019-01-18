@@ -27,7 +27,7 @@ const routes: Routes = [
     resolve: {
       animals: AnimalListResolver,
       species: SpeciesListResolver,
-      location: LocationListResolver
+      locations: LocationListResolver
     }
   },
 
