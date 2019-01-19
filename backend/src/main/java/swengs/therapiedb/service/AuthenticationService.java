@@ -8,6 +8,8 @@ import swengs.therapiedb.dto.AuthenticationDTO;
 import swengs.therapiedb.model.user.User;
 import swengs.therapiedb.model.user.UserRepository;
 
+import java.util.List;
+
 @Service
 public class AuthenticationService {
 
@@ -25,6 +27,10 @@ public class AuthenticationService {
         String currentUserName = authentication.getName();
         findByName(currentUserName);
         return findByName(currentUserName);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     // ---------------------------------------------------------------------------------

@@ -42,16 +42,16 @@ public class AdminController {
 
     // ---------------------------------------------------------------------------------
     @GetMapping("/users")
-    ResponseEntity<List<UserDTO>> getAllUsers() {
+    ResponseEntity<List<AuthenticationDTO>> getAllUsers() {
     // ---------------------------------------------------------------------------------
 
         List<User> entities = userService.findAll();
         if (entities == null || !entities.iterator().hasNext()) {
-            return new ResponseEntity<List<UserDTO>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<List<AuthenticationDTO>>(HttpStatus.NO_CONTENT);
         }
 
-        List<UserDTO> dtos = userFacade.getAll();
-        return new ResponseEntity<List<UserDTO>>(dtos,HttpStatus.OK);
+        List<AuthenticationDTO> dtos = authenticationFacade.getAll();
+        return new ResponseEntity<List<AuthenticationDTO>>(dtos,HttpStatus.OK);
     }
 
     // ---------------------------------------------------------------------------------

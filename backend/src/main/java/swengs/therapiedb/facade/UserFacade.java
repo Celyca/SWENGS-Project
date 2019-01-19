@@ -82,16 +82,6 @@ public class UserFacade {
 
     // ---------------------------------------------------------------------------------
 
-    public List<UserDTO> getAll() {
-        List<UserDTO> dtos = new ArrayList<>();
-        userService.findAll().forEach(entity -> {
-            UserDTO dto = new UserDTO();
-            mapEntityToDto(entity, dto);
-            dtos.add(dto);
-        });
-        return dtos;
-    }
-
     public List<UserDTO> getAllByEmployee() {
         List<UserDTO> dtos = new ArrayList<>();
         userService.findByEmployee().forEach(entity -> {

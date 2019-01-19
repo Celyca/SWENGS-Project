@@ -33,7 +33,9 @@ public class UserService {
 
     public void delete(Long id) {
         User user = findById(id).get();
-        userProfileRepository.delete(user.getUserProfile());
+        if (user.getUserProfile() != null){
+            userProfileRepository.delete(user.getUserProfile());
+        }
         userRepository.deleteById(id);
     }
 
