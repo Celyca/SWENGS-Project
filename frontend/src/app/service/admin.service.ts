@@ -20,11 +20,11 @@ export class AdminService {
   }
 
   getUserById(id: number) {
-    return this.http.get('/api/dto/admin/users'  + id);
+    return this.http.get('/api/dto/admin/users/'  + id);
   }
 
   deleteUser(id: number) {
-    return this.http.delete('/api/dto/admin/users'  + id);
+    return this.http.delete('/api/dto/admin/users/'  + id);
   }
 
   // ---------------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+<div *ngFor="let user of users">
+  // ---------------------------------------------------------------------------------
+  <br/>
+  Name: {{user.username}} <br/>
+
+  <div>
+    Admin:
+    <input type="checkbox" [checked]="user.admin" disabled="true">
+  </div>
+  <div>
+    Employee:
+    <input type="checkbox" [checked]="user.employee" disabled="true">
+  </div>
+
+  <button type="button" (click)="toAdmin(user)">To Admin</button>
+  <button type="button" (click)="toEmployee(user)">To Employee</button>
+  <button type="button" (click)="deleteUser(user)">Delete</button>
+</div>
