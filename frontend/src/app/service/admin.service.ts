@@ -19,7 +19,7 @@ export class AdminService {
     return this.http.get('/api/dto/admin/users');
   }
 
-  getÚserById(id: number) {
+  getUserById(id: number) {
     return this.http.get('/api/dto/admin/users'  + id);
   }
 

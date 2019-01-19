@@ -13,6 +13,11 @@ import {AnimalResolver} from './resolver/animal.resolver';
 import {LocationListComponent} from './location-list/location-list.component';
 import {LocationFormComponent} from './location-form/location-form.component';
 import {LocationResolver} from './resolver/location.resolver';
+import {OfferListComponent} from './offer-list/offer-list.component';
+import {OfferFormComponent} from './offer-form/offer-form.component';
+import {OfferListResolver} from './resolver/offerList.resolver';
+import {OfferResolver} from './resolver/offer.resolver';
+import {EmployeeListResolver} from './resolver/employeeList.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -79,6 +84,44 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     resolve: {
       location: LocationResolver
+    }
+  },
+
+  // ---------------------------------------------------------------------------------
+  // OFFERS
+  // ---------------------------------------------------------------------------------
+
+  {
+    path: 'offers', component: OfferListComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      offers: OfferListResolver,
+      species: SpeciesListResolver,
+      locations: LocationListResolver,
+      employees: EmployeeListResolver,
+    }
+  },
+
+  {
+    path: 'offer-form', component: OfferFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      species: SpeciesListResolver,
+      locations: LocationListResolver,
+      employees: EmployeeListResolver,
+    }
+  },
+
+  // ---------------------------------------------------------------------------------
+
+  {
+    path: 'offer-form/:id', component: OfferFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      offer: OfferResolver,
+      species: SpeciesListResolver,
+      locations: LocationListResolver,
+      employees: EmployeeListResolver,
     }
   },
 
