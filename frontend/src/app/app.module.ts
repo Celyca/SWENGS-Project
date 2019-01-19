@@ -31,6 +31,8 @@ import {SafeUrlPipe} from './pipe/SafeUrlPipe';
 import {ImagePipe} from './pipe/ImagePipe';
 import { LocationListComponent } from './location-list/location-list.component';
 import { LocationFormComponent } from './location-form/location-form.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
+import { OfferFormComponent } from './offer-form/offer-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -50,6 +52,8 @@ export function tokenGetter() {
     ImagePipe,
     LocationListComponent,
     LocationFormComponent,
+    OfferListComponent,
+    OfferFormComponent,
   ],
   imports: [
     BrowserModule,

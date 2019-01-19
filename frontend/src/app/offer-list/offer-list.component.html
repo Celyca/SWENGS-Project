@@ -1,0 +1,36 @@
+<div class="page">
+  <mat-accordion *ngFor="let offer of offers">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Name: {{offer.duration}}
+        </mat-panel-title>
+        <mat-panel-description>
+          A
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Description: {{offer.description}} <br/>
+
+      <!------------Location------------>
+      <div *ngFor="let location of locations">
+        <p *ngIf="location.id === offer.location">{{location.name}}</p>
+      </div>
+
+      <!------------Species------------>
+      <div *ngFor="let specie of species">
+        <p *ngIf="specie.id === offer.species">{{specie.name}}</p>
+      </div>
+
+      <!------------Employee------------>
+      <div *ngFor="let employee of employees">
+        <p *ngIf="employee.id === offer.user">{{employee.firstName}} {{employee.lastName}}</p>
+      </div>
+      <br/>
+      <a mdbBtn color="purple" [routerLink]="'/offer-form/' + offer.id">Edit</a> <button mdbBtn color="purple" type="button" (click)="deleteOffer(offer)">Delete</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button type="button" (click)="createOffer()">
+    Create Offer
+  </button>
+</div>

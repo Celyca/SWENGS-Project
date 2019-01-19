@@ -1,0 +1,59 @@
+<div class="page">
+  <form [formGroup]="offerForm" (ngSubmit)="saveOffer()">
+    <div class="form-group">
+      <div class="row">
+        <label for="description">Description:</label>
+        <input id="description" type="text" name="description" formControlName="description" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="duration">Duration in min:</label>
+        <input id="duration" type="number" name="duration" formControlName="duration" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="species">Species:</label>
+        </div>
+        <div class="col">
+          <ngx-select id="species" [items]="speciesOptions" name="species" [multiple]="false"
+                      formControlName="species" optionTextField="name" [allowClear]="false"></ngx-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="location">Location:</label>
+        </div>
+        <div class="col">
+          <ngx-select id="location" [items]="locationOptions" name="location" [multiple]="false"
+                      formControlName="location" optionTextField="name" [allowClear]="false"></ngx-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="user">Employee:</label>
+        </div>
+        <div class="col">
+          <ngx-select id="user" [items]="employeeOptions" name="user" [multiple]="false"
+                      formControlName="user" optionTextField="firstName" [allowClear]="false">
+            <ng-template ngx-select-option let-option let-text="text">
+              {{option.data.firstName}} {{option.data.lastName}}
+            </ng-template>
+
+            <ng-template ngx-select-option-selected let-option let-text="text">
+              {{option.data.firstName}} {{option.data.lastName}}
+            </ng-template>
+          </ngx-select>
+        </div>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary" [disabled]="offerForm.invalid">
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>
