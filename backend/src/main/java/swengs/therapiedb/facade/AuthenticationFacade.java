@@ -9,6 +9,9 @@ import swengs.therapiedb.model.user.User;
 import swengs.therapiedb.service.AuthenticationService;
 import swengs.therapiedb.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service()
 @Transactional
 public class AuthenticationFacade {
@@ -26,12 +29,15 @@ public class AuthenticationFacade {
 
     void mapDtoToEntity(AuthenticationDTO dto, User entity) {
         entity.setUsername(dto.getUsername());
-        entity.setPassword(encoder.encode(dto.getPassword()));
+        if (dto.getPassword() != null) {
+            entity.setPassword(encoder.encode(dto.getPassword()));
+        }
         entity.setAdmin(dto.isAdmin());
         entity.setEmployee(dto.isEmployee());
     }
 
     private void mapEntityToDto(User entity, AuthenticationDTO dto) {
+        dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
         dto.setAdmin(entity.isAdmin());
         dto.setEmployee(entity.isEmployee());
@@ -68,6 +74,16 @@ public class AuthenticationFacade {
     }
 
     // ---------------------------------------------------------------------------------
+
+    public List<AuthenticationDTO> getAll() {
+        List<AuthenticationDTO> dtos = new ArrayList<>();
+        authenticationService.findAll().forEach(entity -> {
+            AuthenticationDTO dto = new AuthenticationDTO();
+            mapEntityToDto(entity, dto);
+            dtos.add(dto);
+        });
+        return dtos;
+    }
 
     public AuthenticationDTO getAuth() {
         User entity = authenticationService.getAuthentication();
