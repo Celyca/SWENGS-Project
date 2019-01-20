@@ -1,14 +1,14 @@
-<div class="page">
-  <div class="form">
-    <div class="text-center border border-light p-5 offset-lg-4 col-lg-4 col-sm-10 col-xs-6 col-12">
-      <img class="img" src="../../assets/img/logo.png">
-      <p class="h2 mb-4"> LOGIN </p>
 
-      <p style="font-weight: bold">Please <strong>LOG IN</strong> if you want to browse <br>
-        our magical websites.</p>
+<div class="form">
+  <div class="text-center border border-light p-5 offset-lg-4 col-lg-4 col-sm-10 col-xs-6 col-12">
+    <img class="img" src="../../assets/img/logo.png">
+    <p class="h2 mb-4"> LOGIN </p>
 
-      <hr>
-      <form (ngSubmit)="login()">
+    <p style="font-weight: bold">Please <strong>LOG IN</strong> if you want to browse <br>
+      our magical websites.</p>
+
+    <hr>
+    <form (ngSubmit)="login()">
       <label>
         <strong><i class="fa fa-user left mr-2"></i>Username:</strong>
         <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="user.username"/>
@@ -22,10 +22,7 @@
       <br>
       <br>
       <button mdbBtn color="info" block="true" type="submit" class="btn center-block">Login</button>
-      </form>
-      <hr>
-      <p style="font-weight: bold">No profile yet? <br> Then take a moment and <strong>REGISTER</strong>!</p>
-      <button mdbBtn color="primary" block="true" (click)="register()" class="btn center-block">Register</button>
-    </div>
+    </form>
   </div>
 </div>
+

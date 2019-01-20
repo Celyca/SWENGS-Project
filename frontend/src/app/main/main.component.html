@@ -1,3 +1,295 @@
-<p>
-  main works!
-</p>
+
+<!--Main Navigation-->
+<header class="intro-header embed-responsive">
+
+  <!--Intro Section-->
+  <section class="view intro-2">
+    <div class="full-bg-img mask rgba-gradient">
+      <div class="container flex-center">
+        <div class="d-flex align-items-center content-height w-100">
+          <div class="row flex-center pt-5 mt-3 w-100">
+            <div class="col-md-6 text-center text-md-left mb-5">
+              <div class="white-text">
+                <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Jetzt Registrieren! </h2>
+                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Registrieren Sie sich heute noch, um auf unserer tollen
+                  Webseite zu surfen. Spaß sowie sinnvoll verbrachte Zeit sind garantiert!
+                  Falls Sie bereits zu unserem Team gehören, dann loggen Sie sich mit dem "Einloggen"-Button ein und
+                  starten Sie da Abenteuer!</h6>
+                <br>
+                <a mdbBtn color="white" outline="true" class="wow fadeInLeft waves-light" data-wow-delay="0.3s"
+                   mdbPopover="Um mehr Infos zu unserer Institution zu erhalten, sollten Sie sich bitte zuerst registrieren."
+                   placement="right" mdbWavesEffect>
+                  Mehr Infos
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xl-5 offset-xl-1">
+              <!--Form-->
+              <div class="card wow fadeInRight" data-wow-delay="0.3s">
+                <div class="card-body p-5">
+                  <!--Header-->
+                  <div class="text-center">
+                    <h3 class="white-text"><i class="fa fa-user white-text"></i> Registrieren:</h3>
+                    <hr class="hr-light">
+                  </div>
+
+                  <!--Body-->
+                  <form [formGroup]="validationForm">
+                    <div class="md-form">
+                      <i class="fa fa-user prefix white-text"></i>
+                      <input mdbInputDirective data-error="Länge vom Benutzernamen invalid" data-success="Benutzername valid"
+                             formControlName="usernameFormEx" minLength="4"
+                             maxLength="25" type="text" class="form-control" id="username">
+                      <label for="username">Benutzername:</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text"></i>
+                      <input mdbInputDirective data-error="Falsches Passwort" data-success="Valides Passwort"
+                             formControlName="passwordFormEx"
+                             minLength="10" maxLength="25" type="password" class="form-control" id="password">
+                      <label for="password">Passswort:</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text"></i>
+                      <input mdbInputDirective data-error="Falsches Passwort" data-success="Valides Passwort"
+                             formControlName="passwordFormEx2"
+                             minLength="10" maxLength="25" type="password" class="form-control" id="password2">
+                      <label for="password2">Passswort bestätigen:</label>
+                    </div>
+                  </form>
+
+                  <div class="text-center">
+                    <button mdbBtn color="indigo" class="waves-light" mdbWavesEffect>Registrieren</button>
+                  </div>
+
+                </div>
+              </div>
+
+              <!--/.Form-->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="entry row p-5">
+
+    <!--Grid column-->
+    <div class="col-xl-3 col-md-6 mb-r">
+
+      <!--Card-->
+      <div class="entry-card card card-cascade cascading-admin-card z-depth-2">
+
+        <!--Card Data-->
+        <div class="admin-up">
+          <i class="fa fa-cart-plus primary-color"></i>
+          <div class="data">
+            <p>ANGEBOTE</p>
+            <h4><strong>Therapien</strong></h4>
+          </div>
+        </div>
+        <!--/.Card Data-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <h6>Die besten Angebote in Ihrer Umgebung auf einer Seite. Schauen Sie, was wir aktuell für flauschige
+            Therapien anbieten.
+            <br> Für jeden was dabei!</h6>
+          <br>
+          <mdb-badge pill="true" primary="true">Gute Laune garantiert!</mdb-badge>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-xl-3 col-md-6 mb-r">
+
+      <!--Card-->
+      <div class="entry-card card card-cascade cascading-admin-card z-depth-2">
+
+        <!--Card Data-->
+        <div class="admin-up">
+          <i class="fa fa-paw warning-color"></i>
+          <div class="data">
+            <p>TIERFREUNDE</p>
+            <h4><strong>Liebevoll</strong></h4>
+          </div>
+        </div>
+        <!--/.Card Data-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <h6>Unsere kleinen sowie großen flauschigen Kameraden freuen sich darauf, mit Ihnen Zeit zu verbringen und
+            gute Laune zu verbreiten. Kuscheln, Spielen, Spaß!
+          </h6>
+          <br>
+          <mdb-badge pill="true" warning="true">Breite Auswahl!</mdb-badge>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-xl-3 col-md-6 mb-r">
+
+      <!--Card-->
+      <div class="entry-card card card-cascade cascading-admin-card z-depth-2">
+
+        <!--Card Data-->
+        <div class="admin-up">
+          <i class="fa fa-calendar light-blue lighten-1"></i>
+          <div class="data">
+            <p>TERMINE</p>
+            <h4><strong>Überblick</strong></h4>
+          </div>
+        </div>
+        <!--/.Card Data-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <h6>Behalten Sie alle Ihre Termine im Überblick mit Hilfe von unserem Kalender und planen neue Sitzungen.
+            <br> Übersichtlich sowie gut strukturiert!</h6>
+          <br>
+          <mdb-badge pill="true" info="true">Flexible Planung!</mdb-badge>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-xl-3 col-md-6 mb-r">
+
+      <!--Card-->
+      <div class="entry-card card card-cascade cascading-admin-card z-depth-2">
+
+        <!--Card Data-->
+        <div class="admin-up">
+          <i class="fa fa-home red accent-2"></i>
+          <div class="data">
+            <p>STANDORTE</p>
+            <h4><strong>Ankunft</strong></h4>
+          </div>
+        </div>
+        <!--/.Card Data-->
+
+        <!--Card content-->
+        <div class="card-body">
+          <h6>Eine komplette Liste unserer Niederlassungen. Schauen Sie, welcher Standort in Ihrer Nähe ist und wie
+            Sie
+            zu uns kommen. Erstatten Sie uns einen Besuch!</h6>
+          <br>
+          <mdb-badge pill="true" danger="true">In Ihrer Nähe!</mdb-badge>
+        </div>
+        <!--/.Card content-->
+
+      </div>
+      <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+
+
+  <mdb-card class="card">
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 mb-3">
+
+        <img src="https://wildsafebc.com/wp-content/uploads/2018/08/raccoon2-min.jpg"
+             class="wow fadeIn img-fluid z-depth-1" data-wow-delay="0.4s"
+             alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-12 mb-3">
+
+        <img src="https://blog.oxforddictionaries.com/wp-content/uploads/baby-animal-names.jpg"
+             class="wow tada img-fluid z-depth-1" data-wow-delay="0.8s"
+             alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-6 mb-3">
+
+        <img
+          src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12193133/German-Shepherd-Puppy-Fetch.jpg"
+          class="wow rotateIn img-fluid z-depth-1" data-wow-delay="0.6s"
+          alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-4 col-md-6 mb-3">
+
+        <img src="http://bilder.4ever.eu/data/download/tiere/haschen/haschen-216330.jpg?no-logo"
+             class="wow zoomInUp img-fluid z-depth-1" data-wow-delay="0.6s"
+             alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-3">
+
+        <img src="https://www.thealpacagroupnw.com/wp-content/uploads/TAG_Final-5.jpg"
+             class="wow slideInLeft img-fluid z-depth-1" data-wow-delay="0.4s"
+             alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-3">
+
+        <img src="https://www.catster.com/wp-content/uploads/2017/07/Two-happy-cats-cuddled-up-together.jpg"
+             class="wow slideInRight img-fluid z-depth-1" data-wow-delay="0.4s"
+             alt="Responsive image">
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+  </mdb-card>
+</header>
+<!--Main Navigation-->
+

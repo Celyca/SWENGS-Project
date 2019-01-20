@@ -33,6 +33,7 @@ import { LocationListComponent } from './location-list/location-list.component';
 import { LocationFormComponent } from './location-form/location-form.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
+import {UserListComponent} from './user-list/user-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -54,6 +55,7 @@ export function tokenGetter() {
     LocationFormComponent,
     OfferListComponent,
     OfferFormComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 .sidenav-container {
   height: 100%;
 }
+
+
 
 .sidenav {
   width: 200px;
@@ -9,13 +13,86 @@
 
 }
 
-profileBtn{
-  color: red;
-  border-radius: 5px;
+.userMenuImage {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
+
+
+
+
+.circular1 {
+  /* display items as block elements, inline positioning */
+  display: inline-block;
+  /* set the height of the image */
+  height: 50px;
+  /* set the width of the image */
+  width: 50px;
+
+  /* use a radius to make the image into a circular shape */
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+
+  /* Add shadow to the box */
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.circular {
+  /* display items as block elements, inline positioning */
+  display: inline-block;
+  /* set the height of the image */
+  height: 40px;
+  /* set the width of the image */
+  width: 40px;
+
+  /* use a radius to make the image into a circular shape */
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+
+  /* Add shadow to the box */
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+
+/* simple hover effect */
+a.circular{
+  opacity: .8;
+  /* add fade transition effect to opacity change */
+  transition: opacity 0.6s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out; /* Safari */
+}
+
+a.circular1{
+  opacity: .8;
+  /* add fade transition effect to opacity change */
+  transition: opacity 0.6s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out; /* Safari */
+}
+
+a.circular:hover { opacity: 1; }
+
+
+
+.btn-about {
+  background: url(https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg) no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  -moz-background-size: 100%;
+}
+
 .mat-raised-button-danger:hover{
   color: orange;
 }
+
 
 
 .material-icons{
@@ -31,6 +108,14 @@ profileBtn{
   top: 0;
   z-index: 1;
 
+}
+
+mat-sidenav-content{
+  background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-903ea3cb.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .mat-toolbar.mat-toolbar.mat-toolbar-single-row{
@@ -55,6 +140,7 @@ profileBtn{
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 .mat-divider{
@@ -64,7 +150,17 @@ profileBtn{
 }
 
 .mat-list-item:hover{
-  background-color: dodgerblue;
-  color: white;
+  background-color: dodgerblue !important;
+  color: white !important;
   border-radius: 5px;
+}
+
+.dropdown-menu.columns-2 {
+  min-width: 400px;
+}
+
+
+
+.multi-column-dropdown.h1{
+  overflow-wrap: normal;
 }

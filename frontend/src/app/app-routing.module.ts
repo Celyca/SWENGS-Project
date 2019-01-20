@@ -18,7 +18,6 @@ import {OfferFormComponent} from './offer-form/offer-form.component';
 import {OfferListResolver} from './resolver/offerList.resolver';
 import {OfferResolver} from './resolver/offer.resolver';
 import {EmployeeListResolver} from './resolver/employeeList.resolver';
-import {CalendarComponent} from './calendar/calendar.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserListResolver} from './resolver/userList.resolver';
 
@@ -131,7 +130,7 @@ const routes: Routes = [
   // ---------------------------------------------------------------------------------
   // EVENTS
   // ---------------------------------------------------------------------------------
-
+/*
   {
     path: 'calendar', component: CalendarComponent,
     canActivate: [AuthGuard],
@@ -147,7 +146,7 @@ const routes: Routes = [
       locations: LocationListResolver
     }
   },
-
+*/
   // ---------------------------------------------------------------------------------
   // USERS
   // ---------------------------------------------------------------------------------
