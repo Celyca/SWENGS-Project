@@ -40,16 +40,17 @@ public class UserFacade {
     }
 
     private void mapEntityToDto(User entity, UserDTO dto) {
+        UserProfile profile = userService.getProfile(entity);
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
-        dto.setFirstName(entity.getUserProfile().getFirstName());
-        dto.setLastName(entity.getUserProfile().getLastName());
-        dto.setDayOfBirth(entity.getUserProfile().getDayOfBirth());
-        dto.setEmail(entity.getUserProfile().getEmail());
-        dto.setZip(entity.getUserProfile().getZip());
-        dto.setCity(entity.getUserProfile().getCity());
-        dto.setAddress(entity.getUserProfile().getAddress());
-        dto.setPhone(entity.getUserProfile().getPhone());
+        dto.setFirstName(profile.getFirstName());
+        dto.setLastName(profile.getLastName());
+        dto.setDayOfBirth(profile.getDayOfBirth());
+        dto.setEmail(profile.getEmail());
+        dto.setZip(profile.getZip());
+        dto.setCity(profile.getCity());
+        dto.setAddress(profile.getAddress());
+        dto.setPhone(profile.getPhone());
         dto.setLocations(entity.getLocations().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
 

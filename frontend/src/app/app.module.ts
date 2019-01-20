@@ -34,6 +34,9 @@ import { LocationFormComponent } from './location-form/location-form.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import {UserListComponent} from './user-list/user-list.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { UserprofileFormComponent } from './userprofile-form/userprofile-form.component';
+import { UserprofileImageComponent } from './userprofile-image/userprofile-image.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -56,6 +59,9 @@ export function tokenGetter() {
     OfferListComponent,
     OfferFormComponent,
     UserListComponent,
+    UserprofileComponent,
+    UserprofileFormComponent,
+    UserprofileImageComponent,
   ],
   imports: [
     BrowserModule,

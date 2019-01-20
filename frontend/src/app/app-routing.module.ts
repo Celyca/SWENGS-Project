@@ -20,6 +20,9 @@ import {OfferResolver} from './resolver/offer.resolver';
 import {EmployeeListResolver} from './resolver/employeeList.resolver';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserListResolver} from './resolver/userList.resolver';
+import {UserprofileComponent} from './userprofile/userprofile.component';
+import {UserprofileFormComponent} from './userprofile-form/userprofile-form.component';
+import {AuthResolver} from './resolver/auth.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -156,6 +159,26 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     resolve: {
       users: UserListResolver,
+    }
+  },
+
+  // ---------------------------------------------------------------------------------
+
+  {
+    path: 'profile', component: UserprofileComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      user: AuthResolver,
+      locations: LocationListResolver,
+    }
+  },
+
+  {
+    path: 'profile-form', component: UserprofileFormComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      user: AuthResolver,
+      locations: LocationListResolver,
     }
   },
 
