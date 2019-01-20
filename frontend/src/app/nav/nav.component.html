@@ -1,19 +1,23 @@
-<mat-sidenav-container class="sidenav-container" *ngIf="isLoggedIn">
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="!(isHandset$ | async)">
-    <br />
+    <br/>
     <img class="img" src="../../assets/img/logo.png">
     <mat-nav-list>
 
       <a mat-list-item routerLink="/index"><i class="fa fa-home left mr-2"></i> Hauptseite </a>
       <mat-divider></mat-divider>
-      <a mat-list-item ><i class="fa fa-paw left mr-2"></i> Tierfreunde </a>
+      <a mat-list-item routerLink="/animals"><i class="fa fa-paw left mr-2"></i> Tierfreunde </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/offers"><i class="fa fa-book mr-2"></i> Angebote </a>
       <mat-divider></mat-divider>
       <a mat-list-item><i class="fa fa-calendar left mr-2"></i> Kalender </a>
       <mat-divider></mat-divider>
       <a mat-list-item><i class="fa fa-address-card left mr-2"></i> Kontakt </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="locations"><i class="fa fa-map-marker left mr-2"></i> Standorte </a>
       <mat-divider></mat-divider>
       <a mat-list-item><i class="fa fa-child left mr-2"></i> Über uns </a>
       <mat-divider></mat-divider>
@@ -33,14 +37,108 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
+
       <span class="spacer"></span>
+
+      <div class="dropleft" mdbDropdown *ngIf="isLoggedIn && isHandset$ | async">
+
+
+        <a mdbDropdownToggle class="btn-about circular" type="button"
+           mdbWavesEffect>
+        </a>
+        <div class="dropdown-menu dropdown-menu-left dropdown-secondary">
+
+
+          <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
+               class="userMenuImage">
+          <p align="center"><strong>Hallo, Benutzername</strong></p>
+
+          <p>
+            <a href="#" class="btn btn-primary btn-block btn-sm" id="profileButton"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a>
+            <a href="#" class="btn btn-danger btn-block btn-sm" id="logoutButton" (click)="logout()"><i class="fa fa-sign-out left mr-2"></i> Ausloggen</a>
+          </p>
+
+
+        </div>
+      </div>
+
+
+      <div class="dropleft" mdbDropdown *ngIf="isLoggedIn && !(isHandset$ | async )">
+
+
+        <a mdbDropdownToggle class="btn-about circular1" type="button"
+           mdbWavesEffect>
+        </a>
+        <div class="dropdown-menu columns-2">
+
+          <div class="row">
+            <div class="col-12">
+              <h1 align="center">Hallo, Benutzername!</h1>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-12">
+              <br/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 col-xs-6 col-lg-6">
+              <ul class="multi-column-dropdown">
+                <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
+                     class="userMenuImage">
+              </ul>
+            </div>
+
+            <div class="col-sm-6 col-xs-6 col-lg-6">
+              <ul class="multi-column-dropdown">
+
+
+                <p><a href="#" class="btn btn-primary btn-block" id="profileButton1"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a></p>
+                <p><a href="#" class="btn btn-danger btn-block" id="logoutButton1" (click)="logout()"><i class="fa fa-sign-out left mr-2"></i> Ausloggen</a></p>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-sm-6 col-xs-6 col-lg-6">
+              <ul class="multi-column-dropdown">
+
+              </ul>
+
+            </div>
+
+
+            <div class="col-sm-6 col-xs-6 col-lg-6">
+              <ul class="multi-column-dropdown">
+
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+      <button mat-fab color="warn"  *ngIf="!isLoggedIn" (click)="linkLogin()"> <i class="fa fa-sign-in"></i> </button>
+
+      <button mat-fab color="warn"  *ngIf="!isLoggedIn" (click)="linkIndex()"> <i class="fa fa-user-plus"></i> </button>
+
+
 
 
       <!--
       <button type="button" name="profileBtn" ng-href="{{profileurl}}" class="nav-link border border-light white-text blue">
         <i class="fa fa-user-circle-o mr-2"></i>Mein Profil
       </button>
-      !-->
+
 
       <a href="#" class="nav-link border border-light white-text"
          target="_blank" mdbWavesEffect>
@@ -48,11 +146,14 @@
       </a>
 
       <button class="nav-link border border-light white-text red" type="button" (click)="logout()" mdbWavesEffect>
-        <i class="fa fa-sign-out left mr-2"></i>Ausloggen</button>
-
-
+        <i class="fa fa-sign-out left mr-2"></i>Ausloggen
+      </button>
+!-->
 
     </mat-toolbar>
+
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

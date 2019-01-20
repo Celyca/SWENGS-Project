@@ -1,24 +1,101 @@
-<div class="page">
-<mat-accordion *ngFor="let location of locations">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Name: {{location.name}}
-      </mat-panel-title>
-      <mat-panel-description>
-        City: {{location.city}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    E-Mail: {{location.email}} <br/>
-    Zip: {{location.zip}} <br/>
-    Address: {{location.address}} <br/>
-    Phone: {{location.phone}} <br/>
-    <br/>
-    <a mdbBtn color="purple" [routerLink]="'/location-form/' + location.id">Edit</a> <button mdbBtn color="purple" type="button" (click)="deleteLocation(location)">Delete</button>
-  </mat-expansion-panel>
-</mat-accordion>
+<html>
 
-<button type="button" (click)="createLocation()">
-  Create Locations
-</button>
+<!--Grid column-->
+<div class="head wow bounceIn">
+  <!-- Section heading -->
+  <h2 class="h1-responsive font-weight-bold text-center mt-5 p-4"><i class="fa fa-map-marker left mr-2"></i>
+    Standorte</h2>
+  <!-- Section description -->
+  <p class="text-center dark-grey-text w-responsive mx-auto mb-5">Damit sich unsere Kunden auf dem Weg zu uns nicht verlaufen,
+    wird Ihnen natürlich eine detaillierte Beschreibung der Lagee unserer Standorte angeboten. Den erwünschten Standort
+    einfach suchen und Zusatzinfos aufklappen.</p>
+
+  <!--Card-->
+  <div class="row">
+    <div class="offset-lg-1 col-lg-5 p-3">
+      <mdb-card class="text-white mb-3" bgColor="bg-danger" style="max-width: 20rem">
+        <mdb-card-header>Österreich</mdb-card-header>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h5>Unsere Standorte</h5>
+          </mdb-card-title>
+          <mdb-card-text class="text-white">Wir haben bereits mehrere Standorte innerhalb der größten und schönsten
+            österreichischen Städte.
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+
+    <div class="col-lg-5 p-3">
+      <img class="img" src="../../assets/img/austria.png" style="max-width: 20rem">
+    </div>
+  </div>
+  <!--/.Card-->
+
 </div>
+<!--Grid column-->
+
+<div class="input border border-light">
+  <mat-accordion *ngFor="let location of locations">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{location.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row info">
+        <div class="col-lg-5">
+          Stadt: {{location.city}} <br/>
+          E-Mail: {{location.email}} <br/>
+          Zip: {{location.zip}} <br/>
+          Addresse: {{location.address}} <br/>
+          Nummer: {{location.phone}} <br/>
+          <br/>
+          <div class="btn-group" role="group">
+            <a mdbBtn color="deep-orange" [routerLink]="'/location-form/' + location.id">Edit</a>
+            <button mdbBtn color="danger" type="button" (click)="deleteLocation(location)">Delete</button>
+          </div>
+        </div>
+        <div class="offset-lg-1 col-lg-3">
+          <!--map-->
+          <div *ngIf="location.city === 'Graz'" id="map-container-google-1" class="z-depth-1-half map-container">
+            <iframe src="https://maps.google.com/maps?q=graz&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div *ngIf="location.city === 'Wien'" id="map-container-google-2" class="z-depth-1-half map-container">
+            <iframe src="https://maps.google.com/maps?q=vienna&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div *ngIf="location.city === 'Linz'" id="map-container-google-3" class="z-depth-1-half map-container">
+            <iframe src="https://maps.google.com/maps?q=linz&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div *ngIf="location.city === 'Salzburg'" id="map-container-google-4" class="z-depth-1-half map-container">
+            <iframe src="https://maps.google.com/maps?q=salzburg&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div *ngIf="location.city === 'Innsbruck'" id="map-container-google-5" class="z-depth-1-half map-container">
+            <iframe src="https://maps.google.com/maps?q=innsbruck&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"></iframe>
+          </div>
+          <!--map-->
+        </div>
+      </div>
+      <!--Google Maps-->
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div class="btnCreate p-5">
+  <button mdbBtn type="button" color="primary" rounded="true" class="btn wow tada"
+          data-wow-delay="1.5s" (click)="createLocation()"
+          mdbWavesEffect>
+    Create Locations
+  </button>
+</div>
+</html>
+

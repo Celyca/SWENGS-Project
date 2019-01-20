@@ -1,0 +1,34 @@
+
+html {
+  height: 100%;
+
+  .head {
+    background-color: white;
+    margin: 5% 10% 2% 10%;
+    border-radius: 10px;
+
+  }
+
+  .input {
+    background-color: white;
+    margin: 5% 10% 2% 10%;
+    border-radius: 10px;
+  }
+
+  mat-panel-title {
+    font-weight: bold;
+  }
+
+  mat-panel-description {
+    font-weight: bold;
+  }
+
+  .btnCreate {
+    text-align: center;
+  }
+
+  .btn {
+    border: 2px solid white;
+    font-weight: bold;
+  }
+}
