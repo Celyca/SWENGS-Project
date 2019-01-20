@@ -2,14 +2,14 @@
 
 .sidenav-container {
   height: 100%;
+
 }
 
-
-
 .sidenav {
-  width: 200px;
+  width: 250px;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: white;
 
 }
 
@@ -130,23 +130,23 @@ mat-sidenav-content{
 
 .img{
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10% auto 20%;
   max-width: 100px;
   height: auto;
 }
 
-.mat-list-item{
+.mat-list-item {
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
-
+  font-size: 17px;
 }
 
 .mat-divider{
-  max-width: 80%;
+  max-width: 70%;
   margin-left: auto;
   margin-right: auto;
+  color: #ccccb3;
 }
 
 .mat-list-item:hover{
