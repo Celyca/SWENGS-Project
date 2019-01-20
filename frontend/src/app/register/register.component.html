@@ -1,58 +1,76 @@
-<html>
-<form>
+<!--Intro Section-->
+<section class="view intro-2">
+  <div class="full-bg-img mask rgba-gradient">
+    <div class="container flex-center">
+      <div class="d-flex align-items-center content-height w-100">
+        <div class="row flex-center pt-5 mt-3 w-100">
+          <div class="col-md-6 text-center text-md-left mb-5">
+            <div class="white-text">
+              <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Jetzt Registrieren! </h2>
+              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+              <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Registrieren Sie sich heute noch, um auf unserer tollen
+                Webseite zu surfen. Spaß sowie sinnvoll verbrachte Zeit sind garantiert!
+                Falls Sie bereits zu unserem Team gehören, dann loggen Sie sich mit dem "Einloggen"-Button ein und
+                starten Sie da Abenteuer!</h6>
+              <br>
+              <a mdbBtn color="white" outline="true" class="wow fadeInLeft waves-light" data-wow-delay="0.3s"
+                 mdbPopover="Um mehr Infos zu unserer Institution zu erhalten, sollten Sie sich bitte zuerst registrieren."
+                 placement="right" mdbWavesEffect>
+                Mehr Infos
+              </a>
+            </div>
+          </div>
 
-  <div class="text-center border border-light p-5 offset-lg-4 col-lg-4 col-sm-10 col-xs-6 col-12">
-    <img class="img" src="../../assets/img/logo.png">
-    <p class="h2 mb-4"> REGISTER </p>
+          <div class="col-md-6 col-xl-5 offset-xl-1">
+            <!--Form-->
+            <div class="card wow fadeInRight " data-wow-delay="0.3s">
+              <div class="card-body p-5">
+                <!--Header-->
+                <div class="text-center">
+                  <h3><i class="fa fa-user"></i> Registrieren:</h3>
+                  <hr class="hr-light">
+                </div>
 
-    <p style="font-weight: bold">Please fill in all fields in order to register.</p>
+                <!--Body-->
+                <form [formGroup]="validationForm">
+                  <div class="md-form">
+                    <i class="fa fa-user prefix"></i>
+                    <input mdbInputDirective data-error="Länge vom Benutzernamen invalid" data-success="Benutzername valid"
+                           formControlName="usernameFormEx" minLength="4"
+                           maxLength="25" type="text" class="form-control" id="username">
+                    <label for="username">Benutzername:</label>
+                  </div>
 
-    <hr>
-    <label>
-      <strong><i class="fa fa-user left mr-2"></i>Username:</strong>
-      <input type="text" class="form-control" name="username"/>
-    </label>
-    <br>
+                  <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input mdbInputDirective data-error="Falsches Passwort" data-success="Valides Passwort"
+                           formControlName="passwordFormEx"
+                           minLength="10" maxLength="25" type="password" class="form-control" id="password">
+                    <label for="password">Passswort:</label>
+                  </div>
 
-    <label>
-      <strong><i class="fa fa-lock left mr-2"></i>Password:</strong>
-      <input type="text" class="form-control" name="password"/>
-    </label>
-    <br>
-    <label>
-      <strong><i class="fa fa-pencil left mr-2"></i>First name:</strong>
-      <input type="text" class="form-control" name="firstname"/>
-    </label>
-    <br>
+                  <div class="md-form">
+                    <i class="fa fa-lock prefix"></i>
+                    <input mdbInputDirective data-error="Falsches Passwort" data-success="Valides Passwort"
+                           formControlName="passwordFormEx2"
+                           minLength="10" maxLength="25" type="password" class="form-control" id="password2">
+                    <label for="password2">Passswort bestätigen:</label>
+                  </div>
+                </form>
 
-    <label>
-      <strong><i class="fa fa-address-book left mr-2"></i>Last name:</strong>
-      <input type="text" class="form-control" name="lastname"/>
-    </label>
-    <br>
+                <div class="text-center">
+                  <button mdbBtn color="indigo" class="waves-light" mdbWavesEffect>Registrieren</button>
+                </div>
 
-    <label>
-      <strong><i class="fa fa-calendar left mr-2"></i>Birthday:</strong>
-      <input type="date" class="form-control" name="dayOfBirth"/>
-    </label>
-    <br>
+              </div>
+            </div>
 
-    <label>
-      <strong><i class="fa fa-at left mr-2"></i>E-Mail:</strong>
-      <input type="text" class="form-control" name="email"/>
-    </label>
-    <br>
+            <!--/.Form-->
+          </div>
+        </div>
 
-    <label>
-      <strong><i class="fa fa-home left mr-2"></i>Address:</strong>
-      <input type="text" class="form-control" name="address"/>
-    </label>
-
-    <br>
-    <br>
-    <button mdbBtn block="true" (click)="save()" class="btn center-block">Save and Back</button>
-
+      </div>
+    </div>
   </div>
 
-</form>
-</html>
+</section>
