@@ -7,6 +7,7 @@ import swengs.therapiedb.dto.UserDTO;
 import swengs.therapiedb.model.user.User;
 import swengs.therapiedb.model.user.UserProfile;
 import swengs.therapiedb.service.LocationService;
+import swengs.therapiedb.service.UserImageService;
 import swengs.therapiedb.service.UserService;
 
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ public class UserFacade {
     @Autowired
     private LocationService locationService;
 
+    @Autowired
+    private UserImageService userImageService;
+
     // ---------------------------------------------------------------------------------
 
     void mapDtoToEntity(UserDTO dto, User entity) {
@@ -37,6 +41,7 @@ public class UserFacade {
         profile.setPhone(dto.getPhone());
         entity.setLocations(locationService.getLocations(dto.getLocations()));
         entity.setUserProfile(profile);
+        entity.setImage(userImageService.getImage(dto.getImage()));
     }
 
     private void mapEntityToDto(User entity, UserDTO dto) {
@@ -52,6 +57,7 @@ public class UserFacade {
         dto.setAddress(profile.getAddress());
         dto.setPhone(profile.getPhone());
         dto.setLocations(entity.getLocations().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
+        dto.setImage(userService.getImage(entity).getId());
     }
 
     // ---------------------------------------------------------------------------------

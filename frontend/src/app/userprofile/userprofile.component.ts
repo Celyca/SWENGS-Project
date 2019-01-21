@@ -29,10 +29,13 @@ export class UserprofileComponent implements OnInit {
     this.userProfileService.getById(this.user.id)
       .subscribe((userProfile: any) => {
         this.userProfile = userProfile;
+        if (userProfile.firstName == null) {
+          this.edit();
+        }
       });
+  }
 
-    if (this.userProfile.firstName === null) {
-      this.router.navigate(['/profile-form']);
-    }
+  edit() {
+    this.router.navigate(['/profile-form']);
   }
 }

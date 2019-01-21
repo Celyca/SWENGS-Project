@@ -15,7 +15,8 @@ import java.util.Optional;
 @Service
 public class UserImageService {
 
-    private static final String UPLOAD_FOLDER = "uploads/animal";
+    private static final String UPLOAD_FOLDER = "uploads/user";
+    private static final String UPLOAD_F = "uploads";
 
     @Autowired
     private UserImageRepository userImageRepository;
@@ -42,6 +43,7 @@ public class UserImageService {
         dbMedia.setOriginalFileName(multipartFile.getOriginalFilename());
         dbMedia.setContentType(multipartFile.getContentType());
         dbMedia.setSize(multipartFile.getSize());
+
         UserImage savedDbMedia = save(dbMedia);
 
         File dest = retrieveMediaFile(savedDbMedia);
@@ -49,6 +51,19 @@ public class UserImageService {
             fos.write(multipartFile.getBytes());
         }
         return savedDbMedia;
+    }
+
+    // ---------------------------------------------------------------------------------
+
+    public UserImage getImage(Long id) {
+        if (id != null) {
+            Optional<UserImage> entity = findOne(id);
+            if (entity.isPresent()) {
+                return entity.get();
+            }
+            return null;
+        }
+        return null;
     }
 
     // ---------------------------------------------------------------------------------
@@ -61,7 +76,12 @@ public class UserImageService {
 
     private File retrieveUploadsDirectory() {
         String uploadsDirPath = UPLOAD_FOLDER;
+        String uploadedDirPath = UPLOAD_F;
         File uploadsDir = new File(uploadsDirPath);
+        File uploadedDir = new File(uploadedDirPath);
+        if (!uploadedDir.exists()) {
+            uploadedDir.mkdir();
+        }
         if (!uploadsDir.exists()) {
             uploadsDir.mkdir();
         }

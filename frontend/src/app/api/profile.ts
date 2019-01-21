@@ -9,5 +9,6 @@ export interface UserProfile {
   city: string;
   address: string;
   phone: string;
-  location?: Array<any>;
+  locations?: Array<any>;
+  image?: any;
 }

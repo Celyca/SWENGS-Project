@@ -5,10 +5,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import swengs.therapiedb.model.user.User;
-import swengs.therapiedb.model.user.UserProfile;
-import swengs.therapiedb.model.user.UserProfileRepository;
-import swengs.therapiedb.model.user.UserRepository;
+import swengs.therapiedb.model.user.*;
 
 import java.util.*;
 
@@ -56,6 +53,13 @@ public class UserService {
             dtos.forEach((dto) -> entities.add(userRepository.findById(dto).get()));
         }
         return entities;
+    }
+
+    public UserImage getImage(User entity) {
+        if (entity.getImage() == null) {
+            return new UserImage();
+        }
+        return entity.getImage();
     }
 
     // ---------------------------------------------------------------------------------
