@@ -74,13 +74,27 @@ public class EventController {
         eventFacade.delete(id);
         return new ResponseEntity<EventDTO>(HttpStatus.NO_CONTENT);
     }
-
+/*
     // ---------------------------------------------------------------------------------
     @GetMapping("")
     ResponseEntity<List<EventDTO>> getAll() {
         // ---------------------------------------------------------------------------------
 
         List<Event> entities = eventService.findAll();
+        if (entities == null || !entities.iterator().hasNext()) {
+            return new ResponseEntity<List<EventDTO>>(HttpStatus.NO_CONTENT);
+        }
+
+        List<EventDTO> dtos = eventFacade.getAll();
+        return new ResponseEntity<List<EventDTO>>(dtos, HttpStatus.OK);
+    }
+*/
+    // ---------------------------------------------------------------------------------
+    @GetMapping("")
+    ResponseEntity<List<EventDTO>> getAllByUser() {
+    // ---------------------------------------------------------------------------------
+
+        List<Event> entities = eventService.getEventsByUser();
         if (entities == null || !entities.iterator().hasNext()) {
             return new ResponseEntity<List<EventDTO>>(HttpStatus.NO_CONTENT);
         }

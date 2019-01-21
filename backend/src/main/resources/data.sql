@@ -24,3 +24,8 @@ VALUES (3, "Kleinspitz", "Schwarz", "Cookie ist eine wunderschöne Australian Sh
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
 VALUES (3, "Jack Russell Terrier", "Tricolor Weiß, Braun, Schwarz", "Mailo ist ein Jack Russell Terrier, der nicht nur optisch ein Traumhund ist. Durch sein offenes Wesen kommt er mit jedem klar, doch man sollte seinen innerlichen Terrier nicht außer Acht lassen.", "Männlich", "Mailo", 0, null, 1, 1);
+
+/*   UserProfile    */
+
+INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip) VALUES ("Alte Poststraße 147", "Graz", "1990-12-25", "felix@hauer.at", "Felix", 06641234567, "Hauer", 0, 8020);
+INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip) VALUES ("Eckerstraße 30i/3/10", "Graz", "1980-03-14", "sandra@maier.at", "Sandra", 06647654321, "Maier", 0, 8020);
