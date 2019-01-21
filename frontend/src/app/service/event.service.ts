@@ -28,7 +28,7 @@ export class EventService {
     return this.http.delete('/api/dto/events/' + event.id);
   }
 
-  getAll() {
+  getAllbyUser() {
     return this.http.get('/api/dto/events');
   }
 

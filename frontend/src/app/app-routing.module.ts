@@ -23,6 +23,8 @@ import {UserListResolver} from './resolver/userList.resolver';
 import {UserprofileComponent} from './userprofile/userprofile.component';
 import {UserprofileFormComponent} from './userprofile-form/userprofile-form.component';
 import {AuthResolver} from './resolver/auth.resolver';
+import {CalendarComponent} from './calendar/calendar.component';
+import {EventListResolver} from './resolver/eventList.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -133,12 +135,16 @@ const routes: Routes = [
   // ---------------------------------------------------------------------------------
   // EVENTS
   // ---------------------------------------------------------------------------------
-/*
+
   {
     path: 'calendar', component: CalendarComponent,
     canActivate: [AuthGuard],
     resolve: {
-      locations: LocationListResolver
+      events: EventListResolver,
+      offers: OfferListResolver,
+      animals: AnimalListResolver,
+      user: AuthResolver,
+      locations: LocationListResolver,
     }
   },
 
@@ -146,10 +152,13 @@ const routes: Routes = [
     path: 'booking', component: CalendarComponent,
     canActivate: [AuthGuard],
     resolve: {
-      locations: LocationListResolver
+      events: EventListResolver,
+      offers: OfferListResolver,
+      animals: AnimalListResolver,
+      user: AuthResolver,
     }
   },
-*/
+
   // ---------------------------------------------------------------------------------
   // USERS
   // ---------------------------------------------------------------------------------
