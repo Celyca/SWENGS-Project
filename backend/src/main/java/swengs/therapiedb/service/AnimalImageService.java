@@ -17,12 +17,10 @@ import java.util.Optional;
 public class AnimalImageService {
 
     private static final String UPLOAD_FOLDER = "uploads/animals";
+    private static final String UPLOAD_F = "uploads";
 
     @Autowired
     private AnimalImageRepository animalImageRepository;
-
-    @Autowired
-    private AnimalService animalService;
 
     // ---------------------------------------------------------------------------------
 
@@ -77,17 +75,14 @@ public class AnimalImageService {
         return new File(filePath);
     }
 
-    public void deleteMediaFile(AnimalImage media) {
-        File uploadsDir = retrieveUploadsDirectory();
-        String filePath = uploadsDir.getAbsolutePath() + "/" + media.getId();
-        File file = new File(filePath);
-        delete(media.getId());
-        file.delete();
-    }
-
     private File retrieveUploadsDirectory() {
         String uploadsDirPath = UPLOAD_FOLDER;
+        String uploadDirPath = UPLOAD_F;
         File uploadsDir = new File(uploadsDirPath);
+        File uploadDir = new File(uploadDirPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
         if (!uploadsDir.exists()) {
             uploadsDir.mkdir();
         }

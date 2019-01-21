@@ -1,3 +1,71 @@
-<p>
-  userprofile-form works!
-</p>
+<div class="page">
+  <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
+    <div class="form-group">
+      <div class="row">
+        <label for="username">username:</label>
+        <input id="username" type="text" name="username" disabled="true" formControlName="username" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="firstName">firstName:</label>
+        <input id="firstName" type="text" name="firstName" formControlName="firstName" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="lastName">lastName:</label>
+        <input id="lastName" type="text" name="lastName" formControlName="lastName" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="dayOfBirth">dayOfBirth:</label>
+        <input id="dayOfBirth" type="date" name="dayOfBirth" formControlName="dayOfBirth" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="email">email:</label>
+        <input id="email" type="email" name="email" formControlName="email" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="zip">zip:</label>
+        <input id="zip" type="number" name="zip" formControlName="zip" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="city">city:</label>
+        <input id="city" type="text" name="city" formControlName="city" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="address">address:</label>
+        <input id="address" type="text" name="address" formControlName="address" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <label for="phone">phone:</label>
+        <input id="phone" type="tel" name="phone" formControlName="phone" class="form-control"/>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="locations">Location:</label>
+        </div>
+        <div class="col">
+          <ngx-select id="locations" [items]="locationOptions" name="locations" [multiple]="true"
+                      formControlName="locations" optionTextField="name" [allowClear]="false"></ngx-select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <app-userprofile-image name="image" formControlName="image"></app-userprofile-image>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>

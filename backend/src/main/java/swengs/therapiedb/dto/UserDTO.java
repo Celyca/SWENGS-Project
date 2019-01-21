@@ -15,6 +15,7 @@ public class UserDTO {
     private String address;
     private String phone;
     private Set<Long> locations;
+    private Long image;
 
     public long getId() {
         return id;
@@ -102,5 +103,13 @@ public class UserDTO {
 
     public void setLocations(Set<Long> locations) {
         this.locations = locations;
+    }
+
+    public Long getImage() {
+        return image;
+    }
+
+    public void setImage(Long image) {
+        this.image = image;
     }
 }

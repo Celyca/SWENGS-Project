@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/dto/animals/user")
+@RequestMapping("/dto/user/image")
 public class UserImageController {
 
     @Autowired
@@ -35,7 +35,7 @@ public class UserImageController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/users/image/{id}").buildAndExpand(result.getId()).toUri());
-        return new ResponseEntity<UserImage>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<UserImage>(result, headers, HttpStatus.CREATED);
     }
 
     // ---------------------------------------------------------------------------------
@@ -48,6 +48,7 @@ public class UserImageController {
             return new ResponseEntity<InputStreamResource>(HttpStatus.NOT_FOUND);
         }
         UserImage media = mediaResult.get();
+        media.setUser(null);
         File mediaFile = userImageService.retrieveMediaFile(media);
         InputStreamResource resource = new InputStreamResource(new FileInputStream(mediaFile));
 

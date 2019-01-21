@@ -26,7 +26,7 @@ import {AuthResolver} from './resolver/auth.resolver';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
-  {path: 'index', component: MainComponent, canActivate: [AuthGuard]},
+  {path: 'index', component: MainComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
 

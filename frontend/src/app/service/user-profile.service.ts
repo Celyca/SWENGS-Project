@@ -17,10 +17,16 @@ export class UserProfileService {
   }
 
   create(userProfile: UserProfile) {
+    if (userProfile.image) {
+      userProfile.image = userProfile.image.id;
+    }
     return this.http.post('/api/dto/users' + userProfile.id, userProfile);
   }
 
   update(userProfile: UserProfile) {
+    if (userProfile.image) {
+      userProfile.image = userProfile.image.id;
+    }
     return this.http.put('/api/dto/users/' + userProfile.id, userProfile);
   }
 
