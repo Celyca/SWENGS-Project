@@ -27,7 +27,7 @@
 </div>
 <br/>
 
-<div *ngIf="!booking" mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+<div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
      [config]='{backdrop: false, ignoreBackdropClick: false}'   aria-hidden="true">
   <div class="modal-dialog modal-full-height modal-right" role="document">
     <div class="modal-content" *ngIf="modal">
@@ -35,7 +35,7 @@
         <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">{{modal.date}}</h4>
+        <h4 class="modal-title w-100" id="myModalLabel">{{modal.date | date: 'dd.MM.yyyy'}}</h4>
       </div>
       <div class="modal-body">
         {{modal.description}} <br/>
@@ -51,14 +51,13 @@
         {{modal.animalName}} {{modal.animalSpecies}} <br/>
         <br/>
 
-
         Betreuer: <br/>
         <img  [src]="'/api/dto/user/image/' + modal.employeeId | image | async" class="img-thumbnail" style="width: 200px"
               onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';" >
         <br/>
         {{modal.employeeFirstName}} {{modal.employeeLastName}} <br/>
-
         <br/>
+
         Ort: <br/>
         {{modal.location.name}} <br/>
         {{modal.location.zip}} {{modal.location.city}} <br/>

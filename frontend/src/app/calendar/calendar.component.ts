@@ -99,22 +99,20 @@ export class CalendarComponent implements OnInit {
     const modalAnimal: Animal = this.animalOptions.find(x => x.id === clickedEvent.animal);
     const modalLocation: Location = this.locationOptions.find(x => x.id === modalOffer.location);
     this.userProfileService.getById(modalOffer.user)
-      .subscribe((userProfile: any) => {
-        this.modalUser = userProfile;
+      .subscribe((userProfile: UserProfile) => {
+        this.modal = {
+          date: clickedEventDate,
+          description: modalOffer.description,
+          animalName: modalAnimal.name,
+          animalSpecies: modalAnimal.species,
+          animalId: modalAnimal.id,
+          employeeFirstName: userProfile.firstName,
+          employeeLastName: userProfile.lastName,
+          employeeId: userProfile.id,
+          duration: modalOffer.duration,
+          location: modalLocation
+        };
       });
-
-    this.modal = {
-      date: clickedEventDate,
-      description: modalOffer.description,
-      animalName: modalAnimal.name,
-      animalSpecies: modalAnimal.species,
-      animalId: modalAnimal.id,
-      employeeFirstName: this.modalUser.firstName,
-      employeeLastName: this.modalUser.lastName,
-      employeeId: this.modalUser.id,
-      duration: modalOffer.duration,
-      location: modalLocation
-    };
   }
 
   convert() {
