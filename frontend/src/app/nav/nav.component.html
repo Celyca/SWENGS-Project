@@ -15,8 +15,6 @@
       <mat-divider></mat-divider>
       <a mat-list-item><i class="fa fa-calendar left mr-2"></i> Kalender </a>
       <mat-divider></mat-divider>
-      <a mat-list-item><i class="fa fa-address-card left mr-2"></i> Kontakt </a>
-      <mat-divider></mat-divider>
       <a mat-list-item routerLink="locations"><i class="fa fa-map-marker left mr-2"></i> Standorte </a>
       <mat-divider></mat-divider>
       <a mat-list-item><i class="fa fa-child left mr-2"></i> Über uns </a>
@@ -40,6 +38,9 @@
 
       <span class="spacer"></span>
 
+      <app-login *ngIf="!isLoggedIn"></app-login>
+
+
       <div class="dropleft" mdbDropdown *ngIf="isLoggedIn && isHandset$ | async">
 
 
@@ -51,10 +52,10 @@
 
           <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
                class="userMenuImage">
-          <p align="center"><strong>Hallo, Benutzername</strong></p>
+          <p align="center"><strong>Hallo, Username!</strong></p>
 
           <p>
-            <a href="#" class="btn btn-primary btn-block btn-sm" id="profileButton"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a>
+            <a routerLink="/profile" class="btn btn-primary btn-block btn-sm" id="profileButton"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a>
             <a href="#" class="btn btn-danger btn-block btn-sm" id="logoutButton" (click)="logout()"><i class="fa fa-sign-out left mr-2"></i> Ausloggen</a>
           </p>
 
@@ -72,12 +73,6 @@
         <div class="dropdown-menu columns-2">
 
           <div class="row">
-            <div class="col-12">
-              <h1 align="center">Hallo, Benutzername!</h1>
-            </div>
-          </div>
-
-          <div class="row">
 
             <div class="col-12">
               <br/>
@@ -85,20 +80,29 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-6 col-xs-6 col-lg-6">
+            <div class="col-12">
+              <h1 align="center"> Hallo, Benutzername!</h1>
+              <hr style="width: 80%">
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-sm-5 col-xs-5 col-lg-5">
               <ul class="multi-column-dropdown">
                 <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
                      class="userMenuImage">
               </ul>
             </div>
 
-            <div class="col-sm-6 col-xs-6 col-lg-6">
-              <ul class="multi-column-dropdown">
+            <div class="col-sm-6 col-xs-6 col-lg-6 btn__block">
 
 
-                <p><a href="#" class="btn btn-primary btn-block" id="profileButton1"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a></p>
-                <p><a href="#" class="btn btn-danger btn-block" id="logoutButton1" (click)="logout()"><i class="fa fa-sign-out left mr-2"></i> Ausloggen</a></p>
-              </ul>
+
+              <p><a routerLink="/profile" class="btn btn-primary profile__Btn1" id="profileButton1"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a></p>
+              <p><a href="#" class="btn btn-danger logout__Btn1" id="logoutButton1" (click)="logout()"><i class="fa fa-sign-out left mr-2"></i> Ausloggen</a></p>
+
             </div>
           </div>
           <div class="row">
@@ -127,28 +131,8 @@
 
 
 
-      <button mat-fab color="warn"  *ngIf="!isLoggedIn" (click)="linkLogin()"> <i class="fa fa-sign-in"></i> </button>
-
-      <button mat-fab color="warn"  *ngIf="!isLoggedIn" (click)="linkIndex()"> <i class="fa fa-user-plus"></i> </button>
 
 
-
-
-      <!--
-      <button type="button" name="profileBtn" ng-href="{{profileurl}}" class="nav-link border border-light white-text blue">
-        <i class="fa fa-user-circle-o mr-2"></i>Mein Profil
-      </button>
-
-
-      <a href="#" class="nav-link border border-light white-text"
-         target="_blank" mdbWavesEffect>
-        <i class="fa fa-user-circle-o mr-2"></i>Mein Profil
-      </a>
-
-      <button class="nav-link border border-light white-text red" type="button" (click)="logout()" mdbWavesEffect>
-        <i class="fa fa-sign-out left mr-2"></i>Ausloggen
-      </button>
-!-->
 
     </mat-toolbar>
 
