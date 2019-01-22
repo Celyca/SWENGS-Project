@@ -1,28 +1,47 @@
 
-<div class="form">
-  <div class="text-center border border-light p-5 offset-lg-4 col-lg-4 col-sm-10 col-xs-6 col-12">
-    <img class="img" src="../../assets/img/logo.png">
-    <p class="h2 mb-4"> LOGIN </p>
 
-    <p style="font-weight: bold">Please <strong>LOG IN</strong> if you want to browse <br>
-      our magical websites.</p>
 
-    <hr>
-    <form (ngSubmit)="login()">
-      <label>
-        <strong><i class="fa fa-user left mr-2"></i>Username:</strong>
-        <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="user.username"/>
-      </label>
-      <br>
 
-      <label>
-        <strong><i class="fa fa-lock left mr-2"></i>Password:</strong>
-        <input type="text" class="form-control" name="password" placeholder="Password" [(ngModel)]="user.password"/>
-      </label>
-      <br>
-      <br>
-      <button mdbBtn color="info" block="true" type="submit" class="btn center-block">Login</button>
-    </form>
+<button type="button" mdbBtn color="white" [outline]="true" rounded="true" data-toggle="modal" data-target="#loginModal"
+        (click)="frame.show()" id="#loginButton" mdbWavesEffect>Anmelden</button>
+
+
+
+
+<div mdbModal [config]="{backdrop: false}" #frame="mdbModal" class="modal fade left" id="#loginModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 font-weight-bold"><i class="fa fa-sign-in prefix mr-2"></i> Anmelden </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <form (ngSubmit)="login()">
+
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" name="username" id="login-username" [(ngModel)]="user.username" class="form-control"
+                   [mdbValidate]="false" mdbInputDirective>
+            <label data-error="wrong" data-success="right">Benutzername</label>
+
+
+            <div class="md-form mb-4">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input type="password" name="password" id="login-pass" [(ngModel)]="user.password" class="form-control"
+                     [mdbValidate]="false" mdbInputDirective>
+              <label data-error="wrong" data-success="right" for="login-pass">Passwort</label>
+            </div>
+
+            <div class="modal-footer justify-content-center">
+              <button mdbBtn type="submit" class="loginBtn waves-light" mdbWavesEffect>Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

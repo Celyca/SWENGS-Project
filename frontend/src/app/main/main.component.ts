@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-main',
@@ -10,8 +11,10 @@ export class MainComponent implements OnInit {
 
   user: any;
   validationForm: FormGroup;
+  isLoggedIn: boolean;
 
-  constructor(private fb: FormBuilder) {
+
+  constructor(private userService: UserService, private fb: FormBuilder) {
     this.validationForm = fb.group({
       usernameFormEx: [null, [Validators.required, Validators.minLength, Validators.maxLength]],
       passwordFormEx: [null, Validators.required],
@@ -24,6 +27,12 @@ export class MainComponent implements OnInit {
       username: '',
       password: ''
     };
-  }
+    {
+      this.isLoggedIn = this.userService.isLoggedIn;
+      this.userService.loggedInChange.subscribe((isLoggedIn) => {
+        this.isLoggedIn = isLoggedIn;
+      });
+    }
 
+  }
 }

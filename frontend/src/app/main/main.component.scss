@@ -101,3 +101,77 @@ h6 {
   width: 95%;
 }
 
+
+
+
+html {
+  height: 100%;
+}
+
+.intro-header {
+  height: unset !important;
+}
+
+.view {
+  height: 100vh !important;
+}
+.top-nav-collapse {
+  background-color: #3f51b5 !important;
+}
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #3f51b5 !important;
+  }
+}
+.rgba-gradient .full-bg-img {
+  background: linear-gradient(45deg, rgba(83, 125, 210, 0.4), rgba(178, 30, 123, 0.4) 100%);
+}
+.card {
+  background-color: white;
+  border-radius: 15px;
+}
+
+.md-form .prefix {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+.md-form label {
+  color: black;
+}
+h6 {
+  line-height: 1.7;
+}
+@media (max-width: 740px) {
+  .full-height,
+  .full-height body,
+  .full-height header,
+  .full-height header .view {
+    height: 1040px;
+  }
+
+}
+
+.btn-register{
+  background-color: dodgerblue;
+  outline-color: dodgerblue;
+}
+
+.animalOfMonth{
+  border-radius: 15px;
+  text-align: center;
+}
+
+.card-img-top{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+
+}
+
+

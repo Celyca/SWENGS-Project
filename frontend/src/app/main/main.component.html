@@ -3,7 +3,76 @@
 <header class="intro-header embed-responsive">
 
   <!--Intro Section-->
- <app-register></app-register>
+  <app-register *ngIf="!isLoggedIn"></app-register>
+
+
+
+  <!--Intro Section-->
+  <section class="view intro-2" *ngIf="isLoggedIn">
+    <div class="full-bg-img mask rgba-gradient">
+      <div class="container flex-center">
+        <div class="d-flex align-items-center content-height w-100">
+          <div class="row flex-center pt-5 mt-3 w-100">
+            <div class="col-md-6 text-center text-md-left mb-5">
+              <div class="white-text">
+                <h2 class="h1 h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">Jetzt Buchen! </h2>
+                <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Sie leiden unter dauerhafter Müdigkeit? Sie haben das Gefühl,
+                  dass Sie mit ihrem Studium überfordert sind? Sie befürchten, bald
+                  unter einem Burnout zu leiden? Das muss nicht sein!<br> <br>
+                  Buchen Sie sich noch heute einen Termin, um unsere Angebote so bald wie möglich in Anspruch
+                  zu nehmen! Unsere Tiere helfen Ihnen dabei, ihren vom Alltag gestressten
+                  Körper zu regenerieren und Depressionen vorzuwirken!</h6>
+                <br>
+                <a mdbBtn color="white" outline="true" class="wow fadeInLeft waves-light" data-wow-delay="0.3s"
+                   routerLink="/offers"
+                   placement="right" mdbWavesEffect>
+                  Zu den Angeboten
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-xl-5 offset-xl-1 wow fadeInRight animalOfMonth" data-wow-delay="0.3s">
+              <!--Form-->
+              <!-- Card -->
+              <div class="card">
+
+                <!-- Card image -->
+                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+
+                <!-- Card content -->
+                <div class="card-body">
+
+                  <!-- Title -->
+                  <h3 class="card-title"><i class="fa fa-paw prefix mr-2"></i> Tier des Monats</h3>
+                  <!-- Text -->
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                  </p>
+                  <!-- Button -->
+                  <hr style="width: 80%;">
+                  <a routerLink="/animals" class="btn btn-primary wow fadeInRight waves-light">Zu unseren Tieren</a>
+
+                </div>
+
+              </div>
+              <!-- Card -->
+
+
+              <!--/.Form-->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
+
+
 
   <div class="entry row p-5">
 
