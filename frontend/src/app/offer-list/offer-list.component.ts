@@ -12,6 +12,22 @@ import {UserProfile} from '../api/profile';
 })
 export class OfferListComponent implements OnInit {
 
+  public chartType: String = 'pie';
+
+  public chartDatasets: Array<any> = [
+    {data: [82, 18]}
+  ];
+  public chartLabels: Array<any> = ['Verbesserungsbedarf', 'Zufrieden'];
+
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: ['#33adff', '#ff6600'],
+    }
+  ];
+  public chartOptions: any = {
+    responsive: true
+  };
+
   offers: Array<Offer>;
   locations: Array<Location>;
   species: Array<any>;
