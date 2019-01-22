@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class EventDTO {
     private long id;
+    private String description;
     private Date event;
-    private Long aninmal;
+    private Long animal;
     private Long user;
     private Long offer;
 
@@ -17,6 +18,14 @@ public class EventDTO {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Date getEvent() {
         return event;
     }
@@ -25,12 +34,12 @@ public class EventDTO {
         this.event = event;
     }
 
-    public Long getAninmal() {
-        return aninmal;
+    public Long getAnimal() {
+        return animal;
     }
 
-    public void setAninmal(Long aninmal) {
-        this.aninmal = aninmal;
+    public void setAnimal(Long animal) {
+        this.animal = animal;
     }
 
     public Long getUser() {

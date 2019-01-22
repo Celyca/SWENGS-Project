@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import swengs.therapiedb.model.therapie.Event;
 import swengs.therapiedb.model.therapie.EventRepository;
+import swengs.therapiedb.model.user.User;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,9 @@ public class EventService {
 
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     // ---------------------------------------------------------------------------------
 
@@ -48,4 +52,11 @@ public class EventService {
     }
 
     // ---------------------------------------------------------------------------------
+
+    public List<Event> getEventsByUser() {
+        User user = authenticationService.getAuthentication();
+        return eventRepository.findAllByUser(user);
+    }
+
+
 }

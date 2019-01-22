@@ -13,6 +13,6 @@ export class EventListResolver implements Resolve<Observable<any>> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Observable<any>> | Promise<Observable<any>> | Observable<any> {
-    return this.eventService.getAll();
+    return this.eventService.getAllbyUser();
   }
 }

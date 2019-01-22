@@ -33,15 +33,16 @@ public class EventFacade {
 
     void mapDtoToEntity(EventDTO dto, Event entity) {
         entity.setEvent(dto.getEvent());
-        entity.setAnimal(animalService.getAnimal(dto.getAninmal()));
+        entity.setAnimal(animalService.getAnimal(dto.getAnimal()));
         entity.setUser(userService.getUser(dto.getUser()));
         entity.setOffer(offerService.getOffer(dto.getOffer()));
     }
 
     private void mapEntityToDto(Event entity, EventDTO dto) {
         dto.setId(entity.getId());
+        dto.setDescription(entity.getOffer().getDescription());
         dto.setEvent(entity.getEvent());
-        dto.setAninmal(entity.getAnimal().getId());
+        dto.setAnimal(entity.getAnimal().getId());
         dto.setUser(entity.getUser().getId());
         dto.setOffer(entity.getOffer().getId());
     }
@@ -85,5 +86,13 @@ public class EventFacade {
         return dtos;
     }
 
-
+    public List<EventDTO> getAllByUser() {
+        List<EventDTO> dtos = new ArrayList<>();
+        eventService.getEventsByUser().forEach(entity -> {
+            EventDTO dto = new EventDTO();
+            mapEntityToDto(entity, dto);
+            dtos.add(dto);
+        });
+        return dtos;
+    }
 }
