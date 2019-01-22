@@ -88,4 +88,17 @@ public class AnimalController {
         List<AnimalDTO> dtos = animalFacade.getAll();
         return new ResponseEntity<List<AnimalDTO>>(dtos,HttpStatus.OK);
     }
+    // ---------------------------------------------------------------------------------
+    @GetMapping("/count/")
+    ResponseEntity<Integer> getLast() {
+        // ---------------------------------------------------------------------------------
+
+        List<Animal> entities = animalService.findAll();
+        if (entities == null || !entities.iterator().hasNext()) {
+            return new ResponseEntity<Integer>(HttpStatus.NO_CONTENT);
+        }
+
+        Integer size = animalFacade.getAll().size();
+        return new ResponseEntity<Integer>(size,HttpStatus.OK);
+    }
 }

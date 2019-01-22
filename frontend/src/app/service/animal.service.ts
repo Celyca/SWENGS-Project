@@ -39,6 +39,10 @@ export class AnimalService {
     return this.http.get('/api/dto/animals');
   }
 
+  count() {
+    return this.http.get('/api/dto/animals/count/');
+  }
+
   // ---------------------------------------------------------------------------------
 
 }
