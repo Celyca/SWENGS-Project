@@ -1,29 +1,145 @@
-<div *ngFor="let animal of animals">
-  // ---------------------------------------------------------------------------------
-  <br/>
-  Name: {{animal.name}} <br/>
-  Breed: {{animal.breed}} <br/>
-  Color: {{animal.color}} <br/>
-  Age: {{animal.age}} <br/>
-  Gender: {{animal.gender}} <br/>
-  Description: {{animal.description}} <br/>
+<html>
+<!--Grid column-->
+<div class="head wow rotateInDownLeft" data-wow-delay="0.3s">
+  <!-- Section heading -->
+  <h2 class="h1-responsive font-weight-bold text-center mt-5 p-4">
+    <i class="fa fa-paw left mr-2"></i>
+    Tierfreunde</h2>
+  <!-- Section description -->
+  <p class="text-center dark-grey-text w-responsive mx-auto">Mit einer Umarmung ist das Leben gleich viel schöner und
+    was erst, wenn sie von einer lieben, freundlichen Flausch-Kugel kommt?
+    Unsere kleinen sowie großen niedlichen Kameraden freuen
+    sich darauf, mit Ihnen Zeit zu verbringen und gute Laune zu verbreiten!</p>
 
-  <!------------Location------------>
-  <div *ngFor="let location of locations">
-    <p *ngIf="location.id === animal.location">{{location.name}}</p>
+  <hr style="width: 80%">
+  <!--Card-->
+  <div class="row">
+
+    <div class="offset-lg-1 col-lg-4 pt-4 pb-4 wow fadeInLeft" data-wow-delay="0.3s">
+      <!-- Card -->
+      <div class="card card-image mb-3" style="background-color: midnightblue">
+
+        <!-- Content -->
+        <div class="card-entry text-white text-center d-flex align-items-center rgba-indigo-strong py-5 px-4">
+          <div>
+            <h5 class="orange-text"><i class="fa fa-child prefix mr-1"></i> Flauschi-Power</h5>
+            <h3 class="card-title pt-2"><strong>Zeit zum kuscheln!</strong></h3>
+            <p>Unseren Kunden stehen viele flauschige Tiere zur Verfügung. Egal,
+              ob Hund, Katze oder etwas exotisches - für jeden ist was dabei!</p>
+            <br>
+            <mdb-badge pill="true">Süß & Freundlich!</mdb-badge>
+          </div>
+        </div>
+        <!-- Content -->
+      </div>
+      <!-- Card -->
+    </div>
+
+    <div class="offset-lg-0 col-lg-6 pt-4 pb-5 wow fadeInRight" data-wow-delay="0.3s">
+      <mdb-card borderColor="border-warning">
+        <mdb-card-header style="background-color: #ff9800; color: white">
+          <strong>Auswahl</strong></mdb-card-header>
+        <mdb-card-body style="background-color: #ffe0b3">
+          <mdb-card-title>
+            <h5><strong>Unsere Tierarten:</strong></h5>
+          </mdb-card-title>
+          <br>
+          <div class="row">
+            <div class="image offset-lg-0 col-lg-3">
+              <h6>
+                <mdb-badge color="indigo">Hunde</mdb-badge>
+              </h6>
+              <br>
+              <h6>
+                Spielerisch sowie flauschig
+              </h6>
+              <img class="img" src="https://cdn.pixabay.com/photo/2016/04/06/17/42/silhouette-1312358_960_720.png">
+            </div>
+            <div class="image offset-lg-0 col-lg-3">
+              <h6>
+                <mdb-badge color="indigo">Katzen</mdb-badge>
+              </h6>
+              <br>
+              <h6>
+                Zahlreiche süße Rassen
+              </h6>
+              <img class="img" src="https://svgsilh.com/svg_v2/1312357.svg">
+            </div>
+            <div class="image offset-lg-0 col-lg-3">
+              <h6>
+                <mdb-badge color="indigo">Kleintiere</mdb-badge>
+              </h6>
+              <br>
+              <h6>
+                Klein aber trotzdem fein
+              </h6>
+              <img class="img"
+                   src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Rabbit_silhouette_-_erect_ears_-_facing_right.png">
+            </div>
+            <div class="image offset-lg-0 col-lg-3">
+              <h6>
+                <mdb-badge color="indigo">Alpakas</mdb-badge>
+              </h6>
+              <br>
+              <h6>
+                Exotische flauschige Freunde
+              </h6>
+              <img class="img" src="https://svgsilh.com/svg_v2/48379.svg">
+            </div>
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
   </div>
+  <!--/.Card-->
 
-  <!------------Species------------>
-  <div *ngFor="let specie of species">
-    <p *ngIf="specie.id === animal.species">{{specie.name}}</p>
-  </div>
 
-  <br/>
-  <img  [src]="'/api/dto/animals/image/' + animal.image | image | async"
-        onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';" >
-  <!--<a [routerLink]="'/animal-form/' + animal.id">Edit</a> <button type="button" (click)="deleteAnimal(actor)">Delete</button> -->
 </div>
+<div class="input wow slideInRight p-4">
+  <div class="row">
+    <div class="animal offset-lg-0 col-lg-4" *ngFor="let animal of animals">
+      <div class="animal-card card z-depth-2" style="background-color:  #ff8c1a">
 
-<button type="button" (click)="createAnimal()">
-  Create animal
-</button>
+        <!-- Card image -->
+        <img class="card-img-top" [src]="'/api/dto/animals/image/' + animal.image | image | async"
+             onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';">
+        <!--<a [routerLink]="'/animal-form/' + animal.id">Edit</a> <button type="button" (click)="deleteAnimal(actor)">Delete</button> -->
+
+        <div class="card-body">
+          <mdb-card-title>
+          <h3 class="card-title text-center">{{animal.name}}</h3>
+          </mdb-card-title>
+          <hr>
+          <div class="body">
+            <strong>Rasse:</strong> {{animal.breed}} <br>
+            <strong>Fellfarbe:</strong> {{animal.color}} <br>
+              <strong>Alter:</strong> {{animal.age}} <br>
+                <strong>Geschlecht:</strong> {{animal.gender}} <br>
+                  <strong>Beschreibung:</strong> {{animal.description}} <br>
+
+          <!------------Location------------>
+          <div *ngFor="let location of locations">
+            <p *ngIf="location.id === animal.location"><strong>Standort:</strong> {{location.name}}</p>
+          </div>
+        </div>
+        </div>
+        <mdb-card-footer style="background-color:#354497">
+          <div *ngFor="let specie of species">
+            <small class="text-white" *ngIf="specie.id === animal.species">
+              <strong>Tierart: {{specie.name}}</strong>
+            </small>
+          </div>
+        </mdb-card-footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="btnSection p-5">
+  <button mdbBtn type="button" color="primary" rounded="true" class="btn wow tada"
+          data-wow-delay="1.5s" (click)="createAnimal()"
+          mdbWavesEffect>
+    Neues Tier anlegen
+  </button>
+</div>
+</html>
