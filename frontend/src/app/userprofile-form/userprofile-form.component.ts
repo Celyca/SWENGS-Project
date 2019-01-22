@@ -3,12 +3,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserProfileService} from '../service/user-profile.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../api/user';
-import {UserProfile} from '../api/profile';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-userprofile-form',
   templateUrl: './userprofile-form.component.html',
-  styleUrls: ['./userprofile-form.component.scss']
+  styleUrls: ['./userprofile-form.component.scss'],
+  providers: [DatePipe]
 })
 export class UserprofileFormComponent implements OnInit {
 
@@ -18,7 +19,8 @@ export class UserprofileFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private userProfileService: UserProfileService) { }
+              private userProfileService: UserProfileService,
+              private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.profileForm = new FormGroup({
@@ -42,7 +44,9 @@ export class UserprofileFormComponent implements OnInit {
 
     this.userProfileService.getById(this.user.id)
       .subscribe((userProfile: any) => {
-        this.profileForm.setValue(userProfile);
+        const profile = userProfile;
+        profile.dayOfBirth = this.datePipe.transform(profile.dayOfBirth, 'yyyy-MM-dd');
+        this.profileForm.setValue(profile);
       });
 
 
