@@ -99,7 +99,7 @@ public class EventController {
             return new ResponseEntity<List<EventDTO>>(HttpStatus.NO_CONTENT);
         }
 
-        List<EventDTO> dtos = eventFacade.getAll();
+        List<EventDTO> dtos = eventFacade.getAllByUser();
         return new ResponseEntity<List<EventDTO>>(dtos,HttpStatus.OK);
     }
 }

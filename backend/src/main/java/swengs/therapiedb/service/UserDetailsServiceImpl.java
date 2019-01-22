@@ -38,20 +38,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         throw new UsernameNotFoundException("Username: " + username + " not found");
     }
 
-    @PostConstruct()
+    @PostConstruct
     @Transactional
     public void initUsers() {
-        if (userRepository.count() == 0) {
-            swengs.therapiedb.model.user.User admin = new swengs.therapiedb.model.user.User();
-            admin.setUsername("admin");
-            admin.setPassword(encoder.encode("12345"));
-            admin.setAdmin(true);
-            userRepository.save(admin);
-
-            swengs.therapiedb.model.user.User tester = new swengs.therapiedb.model.user.User();
-            tester.setUsername("tester");
-            tester.setPassword(encoder.encode("12345"));
-            userRepository.save(tester);
-        }
+        List<swengs.therapiedb.model.user.User> users = userRepository.findAll();
+        users.forEach(v -> v.setPassword(encoder.encode(v.getPassword())));
+        users.forEach(v -> userRepository.save(v));
     }
 }
