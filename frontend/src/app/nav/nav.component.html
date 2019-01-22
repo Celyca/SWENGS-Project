@@ -47,12 +47,13 @@
         <a mdbDropdownToggle class="btn-about circular" type="button"
            mdbWavesEffect>
         </a>
-        <div class="dropdown-menu dropdown-menu-left dropdown-secondary">
+        <div *ngIf="userProfile" class="dropdown-menu dropdown-menu-left dropdown-secondary">
 
 
-          <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
-               class="userMenuImage">
-          <p align="center"><strong>Hallo, Username!</strong></p>
+          <img [src]="'/api/dto/user/image/' + userProfile.image | image | async"
+               class="userMenuImage"
+               onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';">
+          <p align="center"><strong>Hallo, {{userProfile.username}}!</strong></p>
 
           <p>
             <a routerLink="/profile" class="btn btn-primary btn-block btn-sm" id="profileButton"><i class="fa fa-user-circle-o mr-2"></i> Mein Profil</a>
@@ -70,7 +71,7 @@
         <a mdbDropdownToggle class="btn-about circular1" type="button"
            mdbWavesEffect>
         </a>
-        <div class="dropdown-menu columns-2">
+        <div *ngIf="userProfile" class="dropdown-menu columns-2">
 
           <div class="row">
 
@@ -81,7 +82,7 @@
 
           <div class="row">
             <div class="col-12">
-              <h1 align="center"> Hallo, Benutzername!</h1>
+              <h1 align="center"> Hallo, {{userProfile.username}}!</h1>
               <hr style="width: 80%">
             </div>
           </div>
@@ -91,8 +92,9 @@
           <div class="row">
             <div class="col-sm-5 col-xs-5 col-lg-5">
               <ul class="multi-column-dropdown">
-                <img src="https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg"
-                     class="userMenuImage">
+                <img [src]="'/api/dto/user/image/' + userProfile.image | image | async"
+                     class="userMenuImage"
+                     onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';">
               </ul>
             </div>
 
