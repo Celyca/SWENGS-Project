@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AnimalService} from '../service/animal.service';
 import {SpeciesService} from '../service/species.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-animal-form',
@@ -24,14 +24,14 @@ export class AnimalFormComponent implements OnInit {
   ngOnInit() {
     this.animalForm = new FormGroup({
       'id': new FormControl(),
-      'name': new FormControl(),
-      'breed': new FormControl(),
-      'color': new FormControl(),
-      'age': new FormControl(),
-      'gender': new FormControl(),
-      'description': new FormControl(),
-      'species': new FormControl(),
-      'location': new FormControl(),
+      'name': new FormControl('', [Validators.required]),
+      'breed': new FormControl('', [Validators.required]),
+      'color': new FormControl('', [Validators.required]),
+      'age': new FormControl('', [Validators.required]),
+      'gender': new FormControl('', [Validators.required]),
+      'description': new FormControl('', [Validators.required]),
+      'species': new FormControl('', [Validators.required]),
+      'location': new FormControl('', [Validators.required]),
       'image': new FormControl(),
     });
 

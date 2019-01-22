@@ -1,6 +1,9 @@
 <div class="page">
   <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
     <div class="form-group">
+      <div *ngIf="profileForm.invalid" class="text-center alert alert-danger">
+        Alle Felder müssen ausgefüllt werden!
+      </div>
       <div class="row">
         <label for="username">username:</label>
         <input id="username" type="text" name="username" disabled="true" formControlName="username" class="form-control"/>

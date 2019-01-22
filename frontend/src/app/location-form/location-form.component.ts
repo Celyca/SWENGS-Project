@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationService} from '../service/location.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-location-form',
@@ -20,12 +20,12 @@ export class LocationFormComponent implements OnInit {
   ngOnInit() {
     this.locationForm = new FormGroup({
       'id': new FormControl(),
-      'name': new FormControl(),
-      'email': new FormControl(),
-      'zip': new FormControl(),
-      'city': new FormControl(),
-      'address': new FormControl(),
-      'phone': new FormControl(),
+      'name': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required]),
+      'zip': new FormControl('', [Validators.required]),
+      'city': new FormControl('', [Validators.required]),
+      'address': new FormControl('', [Validators.required]),
+      'phone': new FormControl('', [Validators.required]),
       'animals': new FormControl(),
       'users': new FormControl(),
     });

@@ -5,6 +5,9 @@
       <h2 class="h2-responsive font-weight-bold text-center p-5"><i class="fa fa-plus-square left mr-2"></i>
         Standort hinzufügen</h2>
       <hr class="mb-5">
+      <div *ngIf="locationForm.invalid" class="text-center alert alert-danger">
+      Alle Felder müssen ausgefüllt werden!
+      </div>
       <div class="row">
         <div class="offset-lg-2 col-lg-8 p-2">
           <label for="name"><i class="fa fa-user-plus left mr-2"></i>Name:</label>

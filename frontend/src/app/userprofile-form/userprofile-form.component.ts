@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserProfileService} from '../service/user-profile.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../api/user';
 import {DatePipe} from '@angular/common';
 
@@ -26,14 +26,14 @@ export class UserprofileFormComponent implements OnInit {
     this.profileForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl(),
-      'firstName': new FormControl(),
-      'lastName': new FormControl(),
-      'dayOfBirth': new FormControl(),
-      'email': new FormControl(),
-      'zip': new FormControl(),
-      'city': new FormControl(),
-      'address': new FormControl(),
-      'phone': new FormControl(),
+      'firstName': new FormControl('', [Validators.required]),
+      'lastName': new FormControl('', [Validators.required]),
+      'dayOfBirth': new FormControl('', [Validators.required]),
+      'email': new FormControl('', [Validators.required]),
+      'zip': new FormControl('', [Validators.required]),
+      'city': new FormControl('', [Validators.required]),
+      'address': new FormControl('', [Validators.required]),
+      'phone': new FormControl('', [Validators.required]),
       'locations': new FormControl(),
       'image': new FormControl(),
     });
