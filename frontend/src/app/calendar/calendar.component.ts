@@ -24,14 +24,12 @@ export class CalendarComponent implements OnInit {
 
   entryList: Array<Event>;
   clickedDay: Date;
-  clickedEvent: Event;
   offerOptions: Array<Offer>;
   animalOptions: Array<Animal>;
   locationOptions: Array<Location>;
   offerAnimals: Array<Animal>;
   eventForm;
   booking: boolean;
-  modalUser: UserProfile;
   user: User;
   modal;
 

@@ -29,7 +29,6 @@ import {EventListResolver} from './resolver/eventList.resolver';
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
   {path: 'index', component: MainComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
 
   // ---------------------------------------------------------------------------------
@@ -145,17 +144,6 @@ const routes: Routes = [
       animals: AnimalListResolver,
       user: AuthResolver,
       locations: LocationListResolver,
-    }
-  },
-
-  {
-    path: 'booking', component: CalendarComponent,
-    canActivate: [AuthGuard],
-    resolve: {
-      events: EventListResolver,
-      offers: OfferListResolver,
-      animals: AnimalListResolver,
-      user: AuthResolver,
     }
   },
 
