@@ -41,10 +41,10 @@ VALUES (0,0,"123456","flauschi16",0,6,6);
 /* OFFERS */
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("Let''s Talk about Fluff", 120, 0, 1, 1, 1);
+VALUES ("Let's Talk about Fluff", 120, 0, 1, 1, 1);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("I''m too Fluffy", 180, 0, 2, 1, 4);
+VALUES ("I'm too Fluffy", 180, 0, 2, 1, 4);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
 VALUES ("Fluffy Dirtbag", 180, 0, 3, 2, 4);
