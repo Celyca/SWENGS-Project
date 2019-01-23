@@ -1,4 +1,12 @@
-<div class="form offset-lg-2 col-lg-8">
+<div class="btnSection mt-5 pt-5">
+  <button mdbBtn type="button" color="primary" rounded="true" class="btnShow wow pulse infinite"
+          data-wow-delay="0.3s" (click)="show()"
+          mdbWavesEffect>
+    Termin buchen
+  </button>
+</div>
+
+<div class="form offset-lg-2 col-lg-8 wow slideInRight" *ngIf="booking">
   <form [formGroup]="eventForm" (ngSubmit)="saveEvent()">
     <h4 class="h4-responsive font-weight-bold text-center pt-5"><i class="fa fa-plus-square left mr-2"></i>
       Termin buchen</h4>
@@ -41,15 +49,6 @@
     </div>
   </form>
 </div>
-
-    <div class="btnSection mt-5 pt-5">
-      <button mdbBtn type="button" color="primary" rounded="true" class="btnShow wow pulse infinite"
-              data-wow-delay="0.3s"
-              mdbWavesEffect>
-        Termin buchen
-      </button>
-    </div>
-
 
 
 <div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog"
@@ -101,7 +100,7 @@
   </div>
 </div>
 
-<div class="page">
+<div class="page wow slideInUp">
   <div *ngIf="calendarOptions">
     <ng-fullcalendar #ucCalendar [options]="calendarOptions" [(eventsModel)]="events"
                      (dayClick)="clickDay($event.detail)"

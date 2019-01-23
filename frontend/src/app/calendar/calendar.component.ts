@@ -35,8 +35,8 @@ export class CalendarComponent implements OnInit {
 
   entries = [
     {
-      title: 'Test Event',
-      start: '2019-01-11',
+      title: '',
+      start: '',
       allDay: true
     }
   ];
@@ -139,5 +139,13 @@ export class CalendarComponent implements OnInit {
         this.ngOnInit();
       });
     this.router.navigate(['/calendar']);
+  }
+
+  show() {
+    if (this.booking) {
+      this.booking = false;
+    } else {
+      this.booking = true;
+    }
   }
 }
