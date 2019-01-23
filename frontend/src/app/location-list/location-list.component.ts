@@ -3,6 +3,7 @@ import {Location} from '../api/location';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationService} from '../service/location.service';
 import {Animal} from '../api/animal';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-location-list',
@@ -15,7 +16,8 @@ export class LocationListComponent implements OnInit {
 
   constructor(private locationService: LocationService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class LocationListComponent implements OnInit {
     this.locationService.delete(location)
       .subscribe(() => {
         this.ngOnInit();
+        this.toastr.error(location.name + ' wurde gelöscht.', 'SCHADE!');
       });
   }
 }

@@ -4,6 +4,7 @@ import {UserProfileService} from '../service/user-profile.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../api/user';
 import {DatePipe} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-userprofile-form',
@@ -20,7 +21,8 @@ export class UserprofileFormComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userProfileService: UserProfileService,
-              private datePipe: DatePipe) { }
+              private datePipe: DatePipe,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.profileForm = new FormGroup({
@@ -56,7 +58,7 @@ export class UserprofileFormComponent implements OnInit {
     const user = this.profileForm.value;
     this.userProfileService.update(user)
       .subscribe((response) => {
-        alert('updated successfully');
+        this.toastr.success('Profil wurde aktualisiert.', 'ERFOLG!');
         this.navigateBack();
       });
   }

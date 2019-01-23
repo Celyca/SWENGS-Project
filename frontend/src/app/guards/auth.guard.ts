@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {UserService} from '../service/user.service';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Injectable({
@@ -9,19 +10,17 @@ import {UserService} from '../service/user.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {
+  constructor(private userService: UserService,
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    // handle any redirects if a user isn't authenticated
     if (!this.userService.isLoggedIn) {
-      // redirect the user
       this.router.navigate(['/login']);
+      this.toastr.warning('Bitte logge dich zuerst ein oder registriere dich.', 'OOOPS!');
       return false;
     }
 

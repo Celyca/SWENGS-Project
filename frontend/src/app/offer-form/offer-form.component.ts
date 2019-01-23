@@ -3,6 +3,7 @@ import {AnimalService} from '../service/animal.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from '../service/offer.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-offer-form',
@@ -18,7 +19,8 @@ export class OfferFormComponent implements OnInit {
 
   constructor(private offerService: OfferService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -46,13 +48,13 @@ export class OfferFormComponent implements OnInit {
     if (offer.id) {
       this.offerService.update(offer)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.success('Angebot wurde aktualisiert.', 'ERFOLG!');
           this.navigateBack();
         });
     } else {
       this.offerService.create(offer)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success('Angebot wurde erstellt.', 'ERFOLG!');
           this.navigateBack();
         });
     }

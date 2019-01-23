@@ -4,6 +4,7 @@ import {Offer} from '../api/offer';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OfferService} from '../service/offer.service';
 import {UserProfile} from '../api/profile';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-offer-list',
@@ -35,7 +36,8 @@ export class OfferListComponent implements OnInit {
 
   constructor(private offerService: OfferService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -59,6 +61,7 @@ export class OfferListComponent implements OnInit {
     this.offerService.delete(offer)
       .subscribe(() => {
         this.ngOnInit();
+        this.toastr.error('Angebot wurde gelöscht.', 'SCHADE!');
       });
   }
 }

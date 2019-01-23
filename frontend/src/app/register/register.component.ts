@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../api/user';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,9 @@ export class RegisterComponent implements OnInit {
     password: ''
   };
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router,
+              private userService: UserService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -55,7 +58,7 @@ export class RegisterComponent implements OnInit {
     this.user.password = result.password;
     this.userService.create(this.user)
       .subscribe((response: any) => {
-        alert('created successfully');
+        this.toastr.error('User wurde angelegt.', 'GRATULIERE!');
       });
   }
 }

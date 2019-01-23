@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AdminService} from '../service/admin.service';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -16,7 +17,8 @@ export class UserListComponent implements OnInit {
   constructor(private adminService: AdminService,
               private router: Router,
               private route: ActivatedRoute,
-              private userService: UserService) { }
+              private userService: UserService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.adminService.getAllUsers()
@@ -32,6 +34,7 @@ export class UserListComponent implements OnInit {
     this.adminService.deleteUser(user.id)
       .subscribe(() => {
         this.ngOnInit();
+        this.toastr.error('User wurde gelöscht.', 'SCHADE!');
       });
   }
 
@@ -42,6 +45,7 @@ export class UserListComponent implements OnInit {
       user.admin = true;
     }
     this.updateUser(user);
+    this.toastr.info(user.username + ' wurde bearbeitet.', 'ERFOLG!');
   }
 
   toEmployee(user: User) {
@@ -51,6 +55,7 @@ export class UserListComponent implements OnInit {
       user.employee = true;
     }
     this.updateUser(user);
+    this.toastr.info(user.username + ' wurde bearbeitet.', 'ERFOLG!');
   }
 
   updateUser(user: User) {

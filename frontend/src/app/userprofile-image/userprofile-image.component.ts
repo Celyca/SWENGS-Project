@@ -4,6 +4,7 @@ import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import {UserImage} from '../api/userImage';
 import {UserService} from '../service/user.service';
 import {HttpClient} from '@angular/common/http';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-userprofile-image',
@@ -30,7 +31,8 @@ export class UserprofileImageComponent implements OnInit, ControlValueAccessor {
 
   constructor(private userService: UserService,
               private http: HttpClient,
-              private elm: ElementRef) {
+              private elm: ElementRef,
+              private toastr: ToastrService) {
     this.name = elm.nativeElement.getAttribute('name');
   }
 
@@ -48,6 +50,7 @@ export class UserprofileImageComponent implements OnInit, ControlValueAccessor {
         originalFileName: item.file.name,
         size: item.file.size
       };
+      this.toastr.info('Bild wird hochgeladen.', 'IN ARBEIT!');
     };
 
     this.uploader.onSuccessItem = (item: FileItem, response: string, status: number, headers: ParsedResponseHeaders) => {
@@ -56,6 +59,7 @@ export class UserprofileImageComponent implements OnInit, ControlValueAccessor {
         this.userImage.id = uploadedMedia.id;
         this.onChange(this.userImage);
         this.initPreviews();
+        this.toastr.success('Bild hochgeladen.', 'ERFOLG!');
       }
     };
   }

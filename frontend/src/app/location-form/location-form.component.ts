@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationService} from '../service/location.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-location-form',
@@ -14,7 +15,8 @@ export class LocationFormComponent implements OnInit {
 
   constructor(private locationService: LocationService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -42,13 +44,13 @@ export class LocationFormComponent implements OnInit {
     if (location.id) {
       this.locationService.update(location)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.success(location.name + ' wurde aktualisiert.', 'ERFOLG!');
           this.navigateBack();
         });
     } else {
       this.locationService.create(location)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success(location.name + ' wurde erstellt.', 'ERFOLG!');
           this.navigateBack();
         });
     }

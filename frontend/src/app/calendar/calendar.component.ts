@@ -89,6 +89,7 @@ export class CalendarComponent implements OnInit {
   clickDay(event) {
     this.clickedDay = event.date._d;
     this.eventForm.controls.event.setValue(this.clickedDay);
+    this.booking = true;
   }
 
   clickEvent(event) {
@@ -137,10 +138,9 @@ export class CalendarComponent implements OnInit {
     const event = this.eventForm.value;
     this.eventService.create(event)
       .subscribe((response: any) => {
-        alert('created successfully');
-        this.ngOnInit();
+        this.toastr.success('Termin wurde gebucht.', 'ERFOLG!');
       });
-    this.router.navigate(['/calendar']);
+    this.booking = false;
   }
 
   show() {
