@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import {UserProfileService} from '../service/user-profile.service';
 import {UserProfile} from '../api/profile';
 import {Location} from '../api/location';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-calendar',
@@ -48,7 +49,8 @@ export class CalendarComponent implements OnInit {
               private route: ActivatedRoute,
               private eventService: EventService,
               private datePipe: DatePipe,
-              private userProfileService: UserProfileService) {}
+              private userProfileService: UserProfileService,
+              private toastr: ToastrService) {}
 
   ngOnInit() {
     const result = this.route.snapshot.data;

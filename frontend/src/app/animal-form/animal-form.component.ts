@@ -4,6 +4,7 @@ import {AnimalService} from '../service/animal.service';
 import {SpeciesService} from '../service/species.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Animal} from '../api/animal';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-animal-form',
@@ -20,7 +21,7 @@ export class AnimalFormComponent implements OnInit {
   constructor(private animalService: AnimalService,
               private route: ActivatedRoute,
               private router: Router,
-              private speciesService: SpeciesService) {
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -51,13 +52,13 @@ export class AnimalFormComponent implements OnInit {
     if (animal.id) {
       this.animalService.update(animal)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.success(animal.name + ' wurde aktualisiert.', 'ERFOLG!');
           this.navigateBack();
         });
     } else {
       this.animalService.create(animal)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success(animal.name + ' wurde erstellt.', 'ERFOLG!');
           this.navigateBack();
         });
     }

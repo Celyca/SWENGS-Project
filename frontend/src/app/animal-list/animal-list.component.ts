@@ -3,6 +3,7 @@ import {Animal} from '../api/animal';
 import {Location} from '../api/location';
 import {AnimalService} from '../service/animal.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-animal-list',
@@ -17,7 +18,8 @@ export class AnimalListComponent implements OnInit {
 
   constructor(private animalService: AnimalService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class AnimalListComponent implements OnInit {
   deleteAnimal(animal: Animal) {
     this.animalService.delete(animal)
       .subscribe(() => {
+        this.toastr.error(animal.name + ' wurde gelöscht.', 'SCHADE!');
         this.ngOnInit();
       });
   }
