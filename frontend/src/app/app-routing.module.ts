@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {RegisterComponent} from './register/register.component';
 import {AuthGuard} from './guards/auth.guard';
@@ -25,11 +24,13 @@ import {UserprofileFormComponent} from './userprofile-form/userprofile-form.comp
 import {AuthResolver} from './resolver/auth.resolver';
 import {CalendarComponent} from './calendar/calendar.component';
 import {EventListResolver} from './resolver/eventList.resolver';
+import {CreditsComponent} from './credits/credits.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
   {path: 'index', component: MainComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'credits', component: CreditsComponent},
 
   // ---------------------------------------------------------------------------------
   // ANIMALS
