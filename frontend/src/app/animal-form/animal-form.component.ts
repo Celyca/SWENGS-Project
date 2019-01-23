@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AnimalService} from '../service/animal.service';
 import {SpeciesService} from '../service/species.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Animal} from '../api/animal';
 
 @Component({
   selector: 'app-animal-form',
@@ -14,6 +15,7 @@ export class AnimalFormComponent implements OnInit {
   animalForm;
   locationOptions;
   speciesOptions;
+  animal: Animal;
 
   constructor(private animalService: AnimalService,
               private route: ActivatedRoute,
@@ -38,14 +40,14 @@ export class AnimalFormComponent implements OnInit {
     const data = this.route.snapshot.data;
     this.locationOptions = data.locations;
     this.speciesOptions = data.species;
-    const animal = data.animal;
-    if (animal) {
-      this.animalForm.setValue(animal);
+    this.animal = data.animal;
+    if (this.animal) {
+      this.animalForm.setValue(this.animal);
     }
   }
 
   saveAnimal() {
-    const animal = this.animalForm.value;
+    const animal: Animal = this.animalForm.value;
     if (animal.id) {
       this.animalService.update(animal)
         .subscribe((response) => {
