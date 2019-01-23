@@ -41,6 +41,7 @@ import {FullCalendarModule} from 'ng-fullcalendar';
 import { CalendarComponent } from './calendar/calendar.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CommonModule} from '@angular/common';
+import { CreditsComponent } from './credits/credits.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -67,6 +68,7 @@ export function tokenGetter() {
     UserprofileFormComponent,
     UserprofileImageComponent,
     CalendarComponent,
+    CreditsComponent,
   ],
   imports: [
     BrowserModule,
