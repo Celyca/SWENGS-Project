@@ -23,7 +23,7 @@ export class AdminService {
   // ---------------------------------------------------------------------------------
 
   getAllEmployees() {
-    return this.http.get('/api/dto/admin/employee');
+    return this.http.get('/api/dto/users/employee/');
   }
 
   getAllUsers() {

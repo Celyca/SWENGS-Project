@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import swengs.therapiedb.dto.UserDTO;
 import swengs.therapiedb.facade.UserFacade;
+import swengs.therapiedb.model.user.User;
 import swengs.therapiedb.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/dto/users")
@@ -57,5 +59,19 @@ public class UserController {
 
         userFacade.update(id, dto);
         return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
+    }
+
+    // ---------------------------------------------------------------------------------
+    @GetMapping("/employee/")
+    ResponseEntity<List<UserDTO>> getAllUsersByEmployee() {
+        // ---------------------------------------------------------------------------------
+
+        List<User> entities = userService.findByEmployee();
+        if (entities == null || !entities.iterator().hasNext()) {
+            return new ResponseEntity<List<UserDTO>>(HttpStatus.NO_CONTENT);
+        }
+
+        List<UserDTO> dtos = userFacade.getAllByEmployee();
+        return new ResponseEntity<List<UserDTO>>(dtos,HttpStatus.OK);
     }
 }

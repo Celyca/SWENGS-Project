@@ -23,7 +23,12 @@ public class LocationService {
         return locationRepository.save(entity);
     }
 
-    public void delete(Long id) { locationRepository.deleteById(id); }
+    public void delete(Long id) {
+        Location location = findById(id).get();
+        location.setAnimals(null);
+        location.setUsers(null);
+        save(location);
+        locationRepository.deleteById(location.getId()); }
 
     public List<Location> findAll() {
         return locationRepository.findAll();

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '../api/location';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LocationService} from '../service/location.service';
-import {Animal} from '../api/animal';
 import {ToastrService} from 'ngx-toastr';
+import {AdminService} from '../service/admin.service';
 
 @Component({
   selector: 'app-location-list',
@@ -13,11 +13,13 @@ import {ToastrService} from 'ngx-toastr';
 export class LocationListComponent implements OnInit {
 
   locations: Array<Location>;
+  admin: boolean;
 
   constructor(private locationService: LocationService,
               private router: Router,
               private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private adminService: AdminService) {
   }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class LocationListComponent implements OnInit {
 
     const data = this.route.snapshot.data;
     this.locations = data.locations;
+    this.admin = this.adminService.isAdmin;
   }
 
   createLocation() {

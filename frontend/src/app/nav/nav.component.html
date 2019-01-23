@@ -20,7 +20,7 @@
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/credits"><i class="fa fa-child left mr-2"></i> Über uns </a>
       <mat-divider></mat-divider>
-      <div class="pt-5">
+      <div class="pt-5" *ngIf="user?.admin">
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/admin/users"><i class="fa fa-group left mr-2"></i> Personalverwaltung </a>
       <mat-divider></mat-divider>

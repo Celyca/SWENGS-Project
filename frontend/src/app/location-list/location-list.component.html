@@ -51,7 +51,7 @@
           Addresse: {{location.address}} <br/>
           Nummer: {{location.phone}} <br/>
           <br/>
-          <div class="btn-group" role="group">
+          <div class="btn-group" role="group" *ngIf="admin">
             <a mdbBtn color="deep-orange" [routerLink]="'/location-form/' + location.id">Ändern</a>
             <button mdbBtn color="danger" type="button" (click)="deleteLocation(location)">Löschen</button>
           </div>
@@ -90,7 +90,7 @@
   </mat-accordion>
 </div>
 
-<div class="btnCreate p-5">
+<div class="btnCreate p-5" *ngIf="admin">
   <button mdbBtn type="button" color="primary" rounded="true" class="btn wow tada"
           data-wow-delay="1.5s" (click)="createLocation()"
           mdbWavesEffect>

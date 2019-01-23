@@ -26,6 +26,11 @@ export class AnimalListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.animalService.getAll()
+      .subscribe((animals: any) => {
+        this.animals = animals;
+      });
+
     const data = this.route.snapshot.data;
     this.animals = data.animals;
     this.locations = data.locations;

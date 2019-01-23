@@ -11,7 +11,6 @@ import {AnimalService} from '../service/animal.service';
 })
 export class MainComponent implements OnInit {
 
-  user: any;
   validationForm: FormGroup;
   isLoggedIn: boolean;
   animal: Animal;
@@ -29,10 +28,6 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = {
-      username: '',
-      password: ''
-    };
     {
       this.isLoggedIn = this.userService.isLoggedIn;
       this.userService.loggedInChange.subscribe((isLoggedIn) => {
@@ -45,7 +40,7 @@ export class MainComponent implements OnInit {
     this.animalService.count()
       .subscribe((count: any) => {
         this.animals = count;
-        this.getAnimal()
+        this.getAnimal();
       });
   }
 

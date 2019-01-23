@@ -80,7 +80,7 @@
           </mdb-card-text>
 
           <br>
-          <div class="btnSection">
+          <div class="btnSection" *ngIf="admin">
             <button mdbBtn type="button" color="warning" rounded="true" class="btn wow tada"
                     data-wow-delay="1.5s"
                     mdbWavesEffect>
@@ -88,7 +88,7 @@
             </button>
 
 
-            <div class="btn-group" role="group">
+            <div class="btn-group" role="group" *ngIf="admin">
               <a mdbBtn color="deep-orange" [routerLink]="'/offer-form/' + offer.id">Ändern</a>
               <button mdbBtn color="danger" type="button" (click)="deleteOffer(offer)">Löschen</button>
             </div>
@@ -103,7 +103,7 @@
   </div>
 </div>
 
-<div class="btnCreate p-5">
+<div class="btnCreate p-5" *ngIf="admin">
   <button mdbBtn type="button" color="primary" rounded="true" class="btn wow tada"
           data-wow-delay="1.5s" (click)="createOffer()"
           mdbWavesEffect>

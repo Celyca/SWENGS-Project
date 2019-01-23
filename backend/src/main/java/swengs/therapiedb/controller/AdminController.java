@@ -27,20 +27,6 @@ public class AdminController {
     private AuthenticationFacade authenticationFacade;
 
     // ---------------------------------------------------------------------------------
-    @GetMapping("/employee")
-    ResponseEntity<List<UserDTO>> getAllUsersByEmployee() {
-    // ---------------------------------------------------------------------------------
-
-        List<User> entities = userService.findByEmployee();
-        if (entities == null || !entities.iterator().hasNext()) {
-            return new ResponseEntity<List<UserDTO>>(HttpStatus.NO_CONTENT);
-        }
-
-        List<UserDTO> dtos = userFacade.getAllByEmployee();
-        return new ResponseEntity<List<UserDTO>>(dtos,HttpStatus.OK);
-    }
-
-    // ---------------------------------------------------------------------------------
     @GetMapping("/users")
     ResponseEntity<List<AuthenticationDTO>> getAllUsers() {
     // ---------------------------------------------------------------------------------

@@ -25,6 +25,7 @@ import {AuthResolver} from './resolver/auth.resolver';
 import {CalendarComponent} from './calendar/calendar.component';
 import {EventListResolver} from './resolver/eventList.resolver';
 import {CreditsComponent} from './credits/credits.component';
+import {AdminGuard} from './guards/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -48,7 +49,7 @@ const routes: Routes = [
 
   {
     path: 'animal-form', component: AnimalFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       species: SpeciesListResolver,
       locations: LocationListResolver
@@ -59,7 +60,7 @@ const routes: Routes = [
 
   {
     path: 'animal-form/:id', component: AnimalFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       animal: AnimalResolver,
       species: SpeciesListResolver,
@@ -81,14 +82,14 @@ const routes: Routes = [
 
   {
     path: 'location-form', component: LocationFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
   },
 
   // ---------------------------------------------------------------------------------
 
   {
     path: 'location-form/:id', component: LocationFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       location: LocationResolver
     }
@@ -111,7 +112,7 @@ const routes: Routes = [
 
   {
     path: 'offer-form', component: OfferFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       species: SpeciesListResolver,
       locations: LocationListResolver,
@@ -123,7 +124,7 @@ const routes: Routes = [
 
   {
     path: 'offer-form/:id', component: OfferFormComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       offer: OfferResolver,
       species: SpeciesListResolver,
@@ -154,7 +155,7 @@ const routes: Routes = [
 
   {
     path: 'admin/users', component: UserListComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminGuard],
     resolve: {
       users: UserListResolver,
     }

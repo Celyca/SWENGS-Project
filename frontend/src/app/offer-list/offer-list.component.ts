@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {OfferService} from '../service/offer.service';
 import {UserProfile} from '../api/profile';
 import {ToastrService} from 'ngx-toastr';
+import {AdminService} from '../service/admin.service';
 
 @Component({
   selector: 'app-offer-list',
@@ -33,11 +34,13 @@ export class OfferListComponent implements OnInit {
   locations: Array<Location>;
   species: Array<any>;
   employees: Array<UserProfile>;
+  admin: boolean;
 
   constructor(private offerService: OfferService,
               private router: Router,
               private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private adminService: AdminService) {
   }
 
   ngOnInit() {
@@ -51,6 +54,7 @@ export class OfferListComponent implements OnInit {
     this.locations = data.locations;
     this.species = data.species;
     this.employees = data.employees;
+    this.admin = this.adminService.isAdmin;
   }
 
   createOffer() {
