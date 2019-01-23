@@ -39,6 +39,8 @@ import { UserprofileFormComponent } from './userprofile-form/userprofile-form.co
 import { UserprofileImageComponent } from './userprofile-image/userprofile-image.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
 import { CalendarComponent } from './calendar/calendar.component';
+import {ToastrModule} from 'ngx-toastr';
+import {CommonModule} from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -68,6 +70,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -85,6 +88,7 @@ export function tokenGetter() {
     MatExpansionModule,
     FileUploadModule,
     FullCalendarModule,
+    ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AnimalService} from '../service/animal.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OfferService} from '../service/offer.service';
 
 @Component({
@@ -24,11 +24,11 @@ export class OfferFormComponent implements OnInit {
   ngOnInit() {
     this.offerForm = new FormGroup({
       'id': new FormControl(),
-      'description': new FormControl(),
-      'duration': new FormControl(),
-      'location': new FormControl(),
-      'species': new FormControl(),
-      'user': new FormControl(),
+      'description': new FormControl('', [Validators.required]),
+      'duration': new FormControl('', [Validators.required]),
+      'location': new FormControl('', [Validators.required]),
+      'species': new FormControl('', [Validators.required]),
+      'user': new FormControl('', [Validators.required]),
     });
 
     const data = this.route.snapshot.data;

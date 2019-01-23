@@ -56,7 +56,7 @@
 
           <img [src]="'/api/dto/user/image/' + userProfile.image | image | async"
                class="userMenuImage"
-               onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png'">
+               onError="this.src='https://www.lieco.at/wp-content/uploads/2015/11/placeholder-300x225.png';">
           <p align="center"><strong>Hallo, {{userProfile.username}}!</strong></p>
 
           <p>
