@@ -1,72 +1,99 @@
-<div class="page">
+<div class="head offset-lg-2 col-lg-8 p-5 mb-5 z-depth-2">
   <form [formGroup]="profileForm" (ngSubmit)="saveUser()">
     <div class="form-group">
       <div *ngIf="profileForm.invalid" class="text-center alert alert-danger">
         Alle Felder müssen ausgefüllt werden!
       </div>
+      <h2 class="h2-responsive font-weight-bold text-center p-5"> <i class="fa fa-pencil left mr-2"></i>
+        Profil bearbeiten</h2>
+
+      <hr class="mb-5">
       <div class="row">
-        <label for="username">username:</label>
-        <input id="username" type="text" name="username" disabled="true" formControlName="username" class="form-control"/>
+        <div class="offset-lg-2 col-lg-8 p-2">
+
+        <label for="username"><i class="fa fa-user left mr-2"></i> Benutzername:</label>
+        <input id="username" type="text" name="username" disabled="true" formControlName="username"  class="form-control"/>
+      </div>
       </div>
 
-      <div class="row">
-        <label for="firstName">firstName:</label>
+
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="firstName"><i class="fa fa-id-badge left mr-2"></i>Vorname:</label>
         <input id="firstName" type="text" name="firstName" formControlName="firstName" class="form-control"/>
       </div>
+      </div>
 
+      <div class="offset-lg-2 col-lg-8 p-2">
       <div class="row">
-        <label for="lastName">lastName:</label>
+        <label for="lastName"><i class="fa fa-id-badge left mr-2"></i>Nachname:</label>
         <input id="lastName" type="text" name="lastName" formControlName="lastName" class="form-control"/>
       </div>
+      </div>
 
-      <div class="row">
-        <label for="dayOfBirth">dayOfBirth:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="dayOfBirth"><i class="fa fa-birthday-cake left mr-2"></i> Geburtsdatum:</label>
         <input id="dayOfBirth" type="date" name="dayOfBirth" formControlName="dayOfBirth" class="form-control"/>
+        </div>
       </div>
 
-      <div class="row">
-        <label for="email">email:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="email"><i class="fa fa-at left mr-2"></i> E-Mail:</label>
         <input id="email" type="email" name="email" formControlName="email" class="form-control"/>
+        </div>
       </div>
 
-      <div class="row">
-        <label for="zip">zip:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="zip"><i class="fa fa-map-pin left mr-2"></i> PLZ:</label>
         <input id="zip" type="number" name="zip" formControlName="zip" class="form-control"/>
+        </div>
       </div>
 
-      <div class="row">
-        <label for="city">city:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="city"><i class="fa fa-university left mr-2"></i> Ort:</label>
         <input id="city" type="text" name="city" formControlName="city" class="form-control"/>
+        </div>
       </div>
 
-      <div class="row">
-        <label for="address">address:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+       <div class="row">
+        <label for="address"><i class="fa fa-home left mr-2"></i> Adresse:</label>
         <input id="address" type="text" name="address" formControlName="address" class="form-control"/>
+       </div>
       </div>
-
-      <div class="row">
-        <label for="phone">phone:</label>
+      <div class="offset-lg-2 col-lg-8 p-2">
+        <div class="row">
+        <label for="phone"><i class="fa fa-phone left mr-2"></i> Telefon:</label>
         <input id="phone" type="tel" name="phone" formControlName="phone" class="form-control"/>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <label for="locations">Location:</label>
-        </div>
-        <div class="col">
-          <ngx-select id="locations" [items]="locationOptions" name="locations" [multiple]="true"
-                      formControlName="locations" optionTextField="name" [allowClear]="false"></ngx-select>
         </div>
       </div>
 
 
+      <br>
       <div class="row">
-        <app-userprofile-image name="image" formControlName="image"></app-userprofile-image>
+        <div class="offset-lg-2 col-lg-2">
+          <label for="location"><i class="fa fa-map-marker left mr-2"></i>Standort:</label>
+        </div>
+        <div class="offset-lg-0 col-lg-6">
+          <ngx-select id="location" [items]="locationOptions" name="location" [multiple]="false"
+                      formControlName="location" optionTextField="name" [allowClear]="false"></ngx-select>
+        </div>
+      </div>
+
+      <br>
+      <div class="offset-lg-3 col-lg-6 p-2">
+        <div class="row">
+          <app-userprofile-image name="image" formControlName="image"></app-userprofile-image>
+        </div>
       </div>
     </div>
-    <div class="btn-group">
-      <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">
-        Save
+    <div class="btn-block p-4">
+      <button type="submit" class="btn btn-success wow tada z-depth-2" [disabled]="profileForm.invalid">
+        Speichern
       </button>
     </div>
 

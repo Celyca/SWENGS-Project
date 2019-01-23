@@ -41,11 +41,15 @@
       <app-login *ngIf="!isLoggedIn"></app-login>
 
 
+
       <div class="dropleft" mdbDropdown *ngIf="isLoggedIn && isHandset$ | async">
 
 
         <a mdbDropdownToggle class="btn-about circular" type="button"
-           mdbWavesEffect>
+           mdbWavesEffect><img [src]="'/api/dto/user/image/' + userProfile.image | image | async"
+                               class="userImgNav"
+                               onError="this.src='https://upload.wikimedia.org/wikipedia/commons/7/7c/User_font_awesome.svg';">
+
         </a>
         <div *ngIf="userProfile" class="dropdown-menu dropdown-menu-left dropdown-secondary">
 
@@ -69,7 +73,9 @@
 
 
         <a mdbDropdownToggle class="btn-about circular1" type="button"
-           mdbWavesEffect>
+           mdbWavesEffect> <img [src]="'/api/dto/user/image/' + userProfile.image | image | async"
+                                class="userImgNav1"
+                                onError="this.src='https://upload.wikimedia.org/wikipedia/commons/7/7c/User_font_awesome.svg'">
         </a>
         <div *ngIf="userProfile" class="dropdown-menu columns-2">
 
