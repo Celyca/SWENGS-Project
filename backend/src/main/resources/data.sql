@@ -38,25 +38,25 @@ VALUES (0,0,"123456","wannabe",0,5,5);
 INSERT INTO user (admin, employee, password, username, version, image_id, user_profile_id)
 VALUES (0,0,"123456","flauschi16",0,6,6);
 
-/* ANGEBOTE */
+/* OFFERS */
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("FH Prävention", 120, 0, 1, 1, 1);
+VALUES ("Let's Talk about Fluff", 120, 0, 1, 1, 1);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("Burnout Prävention", 180, 0, 1, 1, 4);
+VALUES ("I'm too Fluffy", 180, 0, 1, 1, 4);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("Burnout Prävention", 180, 0, 1, 2, 4);
+VALUES ("Fluffy Dirtbag", 180, 0, 1, 2, 4);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("Burnout Prävention", 180, 0, 1, 3, 4);
+VALUES ("I will always fluff you", 180, 0, 1, 3, 4);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("Hyperflauschtherapie", 60, 0, 1, 2, 3);
+VALUES ("Rolling in the Fluff", 60, 0, 1, 2, 3);
 
 INSERT INTO offer (description, duration, version, employee_id, location_id, species_id)
-VALUES ("All about Fluff", 180, 0, 1, 3, 2);
+VALUES ("Bohemian Fluffody", 180, 0, 1, 3, 2);
 
 /* USERPROFILE */
 

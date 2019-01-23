@@ -21,8 +21,27 @@
   object-fit: contain;
 }
 
+.userImgNav {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  object-fit: contain;
+}
 
-
+.userImgNav1 {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  z-index: -1;
+  object-fit: contain;
+}
 
 .circular1 {
   /* display items as block elements, inline positioning */
@@ -83,7 +102,7 @@ a.circular:hover { opacity: 1; }
 
 
 .btn-about {
-  background: url(https://www.chrhealth.org/wp-content/uploads/2017/08/user-image-1.jpg) no-repeat;
+  background: no-repeat;
   -webkit-background-size: 100%;
   background-size: 100%;
   -moz-background-size: 100%;
