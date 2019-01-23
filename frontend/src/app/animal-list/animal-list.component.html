@@ -51,9 +51,9 @@
               </h6>
               <br>
               <h6>
-                Spielerisch sowie flauschig
+                Spielerisch<br/> sowie<br/> flauschig
               </h6>
-              <img class="img" src="https://cdn.pixabay.com/photo/2016/04/06/17/42/silhouette-1312358_960_720.png">
+              <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Dog.svg/2000px-Dog.svg.png">
             </div>
             <div class="image offset-lg-0 col-lg-3">
               <h6>
@@ -61,7 +61,7 @@
               </h6>
               <br>
               <h6>
-                Zahlreiche süße Rassen
+                Zahlreiche<br/> süße<br/> Rassen
               </h6>
               <img class="img" src="https://svgsilh.com/svg_v2/1312357.svg">
             </div>
@@ -71,7 +71,7 @@
               </h6>
               <br>
               <h6>
-                Klein aber trotzdem fein
+                Klein aber<br/> trotzdem<br/> fein
               </h6>
               <img class="img"
                    src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Rabbit_silhouette_-_erect_ears_-_facing_right.png">
@@ -82,7 +82,7 @@
               </h6>
               <br>
               <h6>
-                Exotische flauschige Freunde
+                Exotische<br/> flauschige<br/> Freunde
               </h6>
               <img class="img" src="https://svgsilh.com/svg_v2/48379.svg">
             </div>
@@ -122,12 +122,19 @@
             <p *ngIf="location.id === animal.location"><strong>Standort:</strong> {{location.name}}</p>
           </div>
         </div>
+
         </div>
         <mdb-card-footer style="background-color:#354497">
           <div *ngFor="let specie of species">
             <small class="text-white" *ngIf="specie.id === animal.species">
               <strong>Tierart: {{specie.name}}</strong>
             </small>
+          </div>
+        </mdb-card-footer>
+        <mdb-card-footer>
+          <div class="btn-group" role="group" style="margin-bottom: 1%">
+            <a mdbBtn color="success" [routerLink]="'/animal-form/' + animal.id">Ändern</a>
+            <button mdbBtn color="danger" type="button" (click)="deleteAnimal(animal)">Löschen</button>
           </div>
         </mdb-card-footer>
       </div>
