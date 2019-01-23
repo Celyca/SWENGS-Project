@@ -4,6 +4,7 @@ import {Location} from '../api/location';
 import {AnimalService} from '../service/animal.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {AdminService} from '../service/admin.service';
 
 @Component({
   selector: 'app-animal-list',
@@ -15,11 +16,13 @@ export class AnimalListComponent implements OnInit {
   animals: Array<Animal>;
   locations: Array<Location>;
   species: Array<any>;
+  admin: boolean;
 
   constructor(private animalService: AnimalService,
               private router: Router,
               private route: ActivatedRoute,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private adminService: AdminService) {
   }
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class AnimalListComponent implements OnInit {
     this.animals = data.animals;
     this.locations = data.locations;
     this.species = data.species;
+    this.admin = this.adminService.isAdmin;
   }
 
   createAnimal() {

@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {UserService} from './user.service';
+import {User} from '../api/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http: HttpClient) {
+  isAdmin: boolean;
+  isEmployee: boolean;
+
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.userService.getAuth()
+      .subscribe((response: any) => {
+        const user: User = response;
+        this.isAdmin = user.admin;
+        this.isEmployee = user.employee;
+      });
   }
 
   // ---------------------------------------------------------------------------------

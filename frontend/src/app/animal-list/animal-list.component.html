@@ -131,7 +131,7 @@
             </small>
           </div>
         </mdb-card-footer>
-        <mdb-card-footer>
+        <mdb-card-footer *ngIf="admin">
           <div class="btn-group" role="group" style="margin-bottom: 1%">
             <a mdbBtn color="success" [routerLink]="'/animal-form/' + animal.id">Ändern</a>
             <button mdbBtn color="danger" type="button" (click)="deleteAnimal(animal)">Löschen</button>
@@ -142,7 +142,7 @@
     </div>
   </div>
 </div>
-<div class="btnSection p-5">
+<div class="btnSection p-5" *ngIf="admin">
   <button mdbBtn type="button" color="primary" rounded="true" class="btn wow tada"
           data-wow-delay="1.5s" (click)="createAnimal()"
           mdbWavesEffect>
