@@ -17,6 +17,7 @@ export class AnimalListComponent implements OnInit {
   locations: Array<Location>;
   species: Array<any>;
   admin: boolean;
+  animalOptions: Array<Animal>;
 
   constructor(private animalService: AnimalService,
               private router: Router,
@@ -32,7 +33,8 @@ export class AnimalListComponent implements OnInit {
       });
 
     const data = this.route.snapshot.data;
-    this.animals = data.animals;
+    this.animalOptions = data.animals;
+    this.animals = this.animalOptions;
     this.locations = data.locations;
     this.species = data.species;
     this.admin = this.adminService.isAdmin;
@@ -48,5 +50,15 @@ export class AnimalListComponent implements OnInit {
         this.toastr.error(animal.name + ' wurde gelöscht.', 'SCHADE!');
         this.ngOnInit();
       });
+  }
+
+  filerAnimal(input) {
+    if (input) {
+      this.animals = this.animalOptions.filter(x => {
+        return x.name.toLowerCase().indexOf(input.toLowerCase()) !== -1;
+      });
+    } else {
+      this.animals = this.animalOptions;
+    }
   }
 }

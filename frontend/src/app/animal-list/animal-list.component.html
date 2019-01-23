@@ -96,6 +96,10 @@
 
 </div>
 <div class="input wow slideInRight p-4">
+  <div class="md-form offset-lg-0 col-lg-4">
+    <input mdbInputDirective type="text" id="form1" class="form-control" #search (keyup)="filerAnimal(search.value);">
+    <label for="form1" class="">Suche</label>
+  </div>
   <div class="row">
     <div class="animal offset-lg-0 col-lg-4" *ngFor="let animal of animals">
       <div class="animal-card card z-depth-2" style="background-color:  #ff8c1a">
