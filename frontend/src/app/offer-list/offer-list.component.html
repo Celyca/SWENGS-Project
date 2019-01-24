@@ -80,15 +80,25 @@
           </mdb-card-text>
 
           <br>
+<<<<<<< HEAD
           <div class="btnSection" *ngIf="admin">
             <button mdbBtn type="button" color="warning" rounded="true" class="btn wow tada"
                     data-wow-delay="1.5s"
                     mdbWavesEffect>
+=======
+          <div class="btnSection">
+            <a mdbBtn type="button" color="warning" rounded="true" class="btn wow tada"
+                    data-wow-delay="1.5s" [routerLink]="'/calendar/'" mdbWavesEffect>
+>>>>>>> [Fontend] User-List Checkbox, Offer-Button
               Buchen
-            </button>
+            </a>
 
 
+<<<<<<< HEAD
             <div class="btn-group" role="group" *ngIf="admin">
+=======
+            <div class="btn-group text-center" role="group">
+>>>>>>> [Fontend] User-List Checkbox, Offer-Button
               <a mdbBtn color="deep-orange" [routerLink]="'/offer-form/' + offer.id">Ändern</a>
               <button mdbBtn color="danger" type="button" (click)="deleteOffer(offer)">Löschen</button>
             </div>

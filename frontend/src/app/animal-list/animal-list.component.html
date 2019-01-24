@@ -135,10 +135,16 @@
             </small>
           </div>
         </mdb-card-footer>
+<<<<<<< HEAD
         <mdb-card-footer *ngIf="admin">
+=======
+        <mdb-card-footer>
+          <div class="btnSection">
+>>>>>>> [Fontend] User-List Checkbox, Offer-Button
           <div class="btn-group" role="group" style="margin-bottom: 1%">
             <a mdbBtn color="success" [routerLink]="'/animal-form/' + animal.id">Ändern</a>
             <button mdbBtn color="danger" type="button" (click)="deleteAnimal(animal)">Löschen</button>
+          </div>
           </div>
         </mdb-card-footer>
       </div>
