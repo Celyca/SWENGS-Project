@@ -98,7 +98,7 @@
 <div class="input wow slideInRight p-4">
   <div class="md-form offset-lg-0 col-lg-4">
     <input mdbInputDirective type="text" id="form1" class="form-control" #search (keyup)="filerAnimal(search.value);">
-    <label for="form1" class="">Suche</label>
+    <label for="form1" class="m1-2">Suche</label>
   </div>
   <div class="row">
     <div class="animal offset-lg-0 col-lg-4" *ngFor="let animal of animals">
@@ -136,9 +136,11 @@
           </div>
         </mdb-card-footer>
         <mdb-card-footer *ngIf="admin">
+          <div class="btnSection">
           <div class="btn-group" role="group" style="margin-bottom: 1%">
             <a mdbBtn color="success" [routerLink]="'/animal-form/' + animal.id">Ändern</a>
             <button mdbBtn color="danger" type="button" (click)="deleteAnimal(animal)">Löschen</button>
+          </div>
           </div>
         </mdb-card-footer>
       </div>
