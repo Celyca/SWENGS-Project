@@ -81,11 +81,10 @@
 
           <br>
           <div class="btnSection" *ngIf="admin">
-            <button mdbBtn type="button" color="warning" rounded="true" class="btn wow tada"
-                    data-wow-delay="1.5s"
-                    mdbWavesEffect>
+            <a mdbBtn type="button" color="warning" rounded="true" class="btn wow tada"
+               data-wow-delay="1.5s" [routerLink]="'/calendar/'" mdbWavesEffect>
               Buchen
-            </button>
+            </a>
 
 
             <div class="btn-group" role="group" *ngIf="admin">
