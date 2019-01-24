@@ -17,7 +17,7 @@ export class OfferListComponent implements OnInit {
   public chartType: String = 'pie';
 
   public chartDatasets: Array<any> = [
-    {data: [82, 18]}
+    {data: [18, 82]}
   ];
   public chartLabels: Array<any> = ['Verbesserungsbedarf', 'Zufrieden'];
 

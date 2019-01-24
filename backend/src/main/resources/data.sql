@@ -61,22 +61,22 @@ VALUES ("Bohemian Fluffody", 180, 0, 4, 3, 2);
 /* USERPROFILE */
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Alte Poststraße 147", "Graz", "1990-12-25", "felix@hauer.at", "Felix", 06641234567, "Hauer", 0, 8020);
+VALUES ("Alte Poststraße 147", "Graz", "1990-12-25", "felix@hauer.at", "Felix", "06641234567", "Hauer", 0, 8020);
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Eckerstraße 30i/3/10", "Graz", "1980-03-14", "sandra@maier.at", "Sandra", 06647654321, "Maier", 0, 8020);
+VALUES ("Eckerstraße 30i/3/10", "Graz", "1980-03-14", "sandra@maier.at", "Sandra", "06647654321", "Maier", 0, 8020);
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Alte Poststraße 147", "Graz", "1983-08-18", "patrik@rauche.at", "Patrik", 066434001193, "Rauche", 0, 8020);
+VALUES ("Alte Poststraße 147", "Graz", "1983-08-18", "patrik@rauche.at", "Patrik", "066434001193", "Rauche", 0, 8020);
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Grazer Straße 18/3", "Weiz", "1994-09-01", "eliska@kra.at", "Liska", 06649482059, "Kra", 0, 8160);
+VALUES ("Grazer Straße 18/3", "Weiz", "1994-09-01", "eliska@kra.at", "Liska", "06649482059", "Kra", 0, 8160);
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Europaplatz 12", "Graz", "1981-04-10", "sven@neubauer.at", "Sven", 067629384578, "Neubauer", 0, 8010);
+VALUES ("Europaplatz 12", "Graz", "1981-04-10", "sven@neubauer.at", "Sven", "067629384578", "Neubauer", 0, 8010);
 
 INSERT INTO user_profile (address, city, day_of_birth, email, first_name, phone, last_name, version, zip)
-VALUES ("Weizer Straße 17b", "Gleisdorf", "1991-11-28", "sue@hello.at", "Sue", 066022948294, "Hue", 0, 8200);
+VALUES ("Weizer Straße 17b", "Gleisdorf", "1991-11-28", "sue@hello.at", "Sue", "066022948294", "Hue", 0, 8200);
 
 
 /*   TIERARTEN    */
@@ -159,17 +159,17 @@ INSERT INTO animal (age, breed, color, description, gender, `name`, version, ima
 VALUES (0, "Australian Shepherd", "Blue Merle", "Kiki ist ein wunderschönes Australian Shepherd Mädchen, welches sehr zutraulich ist. Natürlich ist sie auch sehr flauschig.", "Weiblich", "Kiki", 0, 1, 1, 1);
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
-VALUES (3, "Mischling", "Braun, Weiß", "Scoobie ist ein Jack Russell Mix. Durch ihr offenes Wesen kommt sie mit jedem klar.", "Weiblich", "Scoobie", 0, 2, 2, 1);
+VALUES (3, "Mischling", "Braun, Weiß", "Scoobie ist ein Jack Russell Mix. Durch ihr offenes Wesen kommt sie mit jedem klar.", "Weiblich", "Scoobie", 0, 2, 1, 1);
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
-VALUES (2, "Mischling", "Schwarz", "Bessie ist eine wundervolle, freundliche Hundedame, die es liebt, bschäftigt zu werden. Sie verzaubert mit ihrem Wesen jeden Menschen.", "Weiblich", "Bessie", 0, 3, 3, 1);
+VALUES (2, "Mischling", "Schwarz", "Bessie ist eine wundervolle, freundliche Hundedame, die es liebt, bschäftigt zu werden. Sie verzaubert mit ihrem Wesen jeden Menschen.", "Weiblich", "Bessie", 0, 3, 1, 1);
 
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
 VALUES (5, "Berner-Sennenhund", "Schwarz, Weiß", "Cosmo ist einsehr aktiver, freundlicher Berner-Sennenhund.Mit seiner freundlichen Art trotz seiner Größe macht ersich äußerst Beliebt.", "Männlich", "Cosmo", 0, 4, 1, 1);
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
-VALUES (8, "Mischling", "Goldbraun", "Snorre ist ein Hund, der durch seine Tricks begeistert. Neben Saltos und Film-Tricks ist er aber auch ein flauschiger Therapiehund.", "Männlich", "Snorre", 0, 5, 2, 1);
+VALUES (8, "Mischling", "Goldbraun", "Snorre ist ein Hund, der durch seine Tricks begeistert. Neben Saltos und Film-Tricks ist er aber auch ein flauschiger Therapiehund.", "Männlich", "Snorre", 0, 5, 1, 1);
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
 VALUES (13, "Katze", "Schwarz", "Poci ist eine Katze, die sich ganz besonders über Kuscheleinheiten freut.", "Weiblich", "Poci", 0, 6, 3, 2);
@@ -208,7 +208,7 @@ INSERT INTO animal (age, breed, color, description, gender, `name`, version, ima
 VALUES (2, "Alpaka", "Weiß", "Tina ist ein flauschiges Alpaka, das nur selten spuckt und meistens grinst.", "Männlich", "Tina", 0, 17, 3, 4);
 
 INSERT INTO animal (age, breed, color, description, gender, `name`, version, image_id, location_id, species_id)
-VALUES (2, "Jack Russell", "Tricolor", "Pepper liebt jeden Menschen und ist nicht wählerisch bei der Wahl ihrer Therapie-Kunden.", "Weiblich", "Pepper", 0, 18, 3, 1);
+VALUES (2, "Jack Russell", "Tricolor", "Pepper liebt jeden Menschen und ist nicht wählerisch bei der Wahl ihrer Therapie-Kunden.", "Weiblich", "Pepper", 0, 18, 1, 1);
 
 
 
